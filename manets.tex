@@ -25,10 +25,23 @@ Mobile Ad-Hoc networks are blah blah.
 
 
 \section{Introduction}
-Mobile Ad-Hoc networks are blah blah.
+Mobile Ad-Hoc networks represent a unique amount of challenges for routing
+protocols because of their flexible nature, battery driven nodes. One example
+for ad-hoc networks, albeit not that mobile, are wireless sensor networks.
+
+Routing protocols in such networks need to consider several important key
+factors:
+\begin{enumerate}
+   \item Scalability -- A protocol should scale to a large number of nodes
+   \item Fault tolerance -- A protocol should continue working if some nodes fail
+   \item Energy efficiency -- A protocol should not consume more energy than needed,
+   either on an individual node, or aggregated.
+\end{enumerate}
 
 A recent survey\cite{alotaibi2012survey} on routing protocols for wireless
-ad hoc networks describes the following six categories for routing protocols:
+ad hoc networks describes six categories of routing protocols for wireless
+ad-hoc networks,  in addition to the classic categories of proactive (that is, table driven)
+and reactive (that is, on demand) routing protocols:
 \begin{enumerate}
   \item Geographical
   \item Geo-cast
@@ -40,8 +53,6 @@ ad hoc networks describes the following six categories for routing protocols:
   \item WMN
   \item Multicast
 \end{enumerate}
--- in addition to the classic categories of proactive (that is, table driven)
-and reactive (that is, on demand) routing protocols.
 
 Most of these categories are not focused on energy efficiency, but more on
 other factors such as fault tolerance, scalability and performance. The only
@@ -49,6 +60,13 @@ category in which energy efficiency is discussed is that of power-aware algorith
 
 
 \section{Categories}
+Classic routing protocols are categorised in two dimensions:
+centralized/distributable and proactive/reactive.
+The unique challenges inherent in wireless ad-hoc networks led to a larger
+amount of categories, which are not always necessarily disjoint, meaning
+that an algorithm may belong to one or more categories.
+
+
 \subsection{Geographical routing}
 The basic idea behind geographical routing is that nodes are addressed by
 their geographic location instead of an IP address. This has the advantage
