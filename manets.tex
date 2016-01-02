@@ -1,0 +1,152 @@
+
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[UKenglish]{babel}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage[cmex10]{amsmath}
+\usepackage{hyperref}
+\parskip 2ex
+
+
+\begin{document}
+\title{Energy-efficient Routing Protocols for Mobile ad-hoc Networks}
+\author{\IEEEauthorblockN{Julian Andres Klode}
+\IEEEauthorblockA{Philips-Universität Marburg \\
+Email:\href{mailto:klode@mathematik.uni-marburg.de}{klode@mathematik.uni-marburg.de}}}
+
+\maketitle
+
+
+\begin{abstract}
+Mobile Ad-Hoc networks are blah blah.
+\end{abstract}
+
+
+\section{Introduction}
+Mobile Ad-Hoc networks are blah blah.
+
+A recent survey\cite{alotaibi2012survey} on routing protocols for wireless
+ad hoc networks describes the following six categories for routing protocols:
+\begin{enumerate}
+  \item Geographical
+  \item Geo-cast
+  \item Multi-Path
+  \item Hierarchical
+  \item Power-aware
+  \item Flow-Oriented
+  \item Hybrid
+  \item WMN
+  \item Multicast
+\end{enumerate}
+-- in addition to the classic categories of proactive (that is, table driven)
+and reactive (that is, on demand) routing protocols.
+
+Most of these categories are not focused on energy efficiency, but more on
+other factors such as fault tolerance, scalability and performance. The only
+category in which energy efficiency is discussed is that of power-aware algorithms.
+
+
+\section{Categories}
+\subsection{Geographical routing}
+The basic idea behind geographical routing is that nodes are addressed by
+their geographic location instead of an IP address. This has the advantage
+that each node does not need to know the full network topology, but each
+node needs to know its location and each source needs to know the location
+of the receiver.
+
+Geographical routing does not consider energy efficiency, as such it makes
+no sense to discuss them further.
+
+\subsection{Geo-cast}
+Geo-cast routing merges multi-cast routing with geographical routing, to
+deliver messages to a group of nodes identified by their locations.
+
+\subsection{Hierarchical RA}
+A hierarchical routing algorithm defines multiple zones or clusters with
+gateways that connect them with each other. Inside a cluster, there often
+are one or more cluster heads, that are responsible for maintaining the
+connectivity within the cluster. Non-head nodes can only communicate with
+their cluster heads, whereas gateway nodes can exchange information with
+other clusters.
+
+
+\subsection{Multi-path}
+In a multi-path routing algorithms, multiple paths exists from one source
+to a destination. The obvious advantages of a multi-path routing
+algorithm include fault tolerance (if one path fails, another is still in
+use), load distribution (congested routes can be avoided by chosing alternative
+routes), peak performance (multiple routes may be used in parallel for different
+parts of data).
+
+Energy-efficiency is not a paramount concern of most multi-path routing, the
+load balancing idea can however not only be applied to performance, but also
+to power levels, to distribute the power used within the network, as we will
+see later on. Such an algorithm would of course also be power-aware.
+
+\subsection{Power-aware}
+A power-aware routing algorithm tries to find a good trade off between
+power consumption of nodes and mobility. \cite{main1} describes two categories
+of power-aware protocols: those that try to minimise the active communication energy -- either
+by controlling the power used for transmission, or by load control -- and
+algorithms that try to minimise the inactivity energy, for example, by putting
+rarely used nodes to sleep.
+
+
+\section{Protocol survey}
+\subsection{Transmission power control}
+\subsubsection{Flow argumentation routing (FAR)}
+Flow argumentation routing (FAR) was discussed by Chang and Tassiulas\cite{chang2000energy};
+\subsubsection{Online max-min (OMM)}
+OMM was discussed by Li, Alsam, Rus\cite{li2001online};
+\subsubsection{Power aware localized routing (PLR)}
+Discussed by Stojmenovic and Lin \cite{stojmenovic2001power};
+\subsubsection{Minimum energy routing (MER)}
+Discussed by Doshi, Bhandare, Brown \cite{doshi2002demand};
+\subsubsection{Retransmission-energy aware routing (RAR)}
+Discussed by Banarjee and Misra \cite{banerjee2002minimum};
+\subsubsection{Smallest common power (COMPOW)}
+Discussed by Narayanaswamy, Kawadia, Sreenivas and Kumar\cite{narayanaswamy2002power};
+
+\subsection{Load distribution}
+\subsubsection{Local Energy Aware Routing Protocol (LEAR)}
+Woo et al. introduced LEAR\cite{woo2001non},
+
+\subsubsection{Conditional max-min battery capacity routing (CMMBCR)}
+Too introduced CMMBCR\cite{toh2001maximum}.
+
+\subsection{Sleep/power­ down mode}
+\subsubsection{SPAN}
+Span\cite{chen2002span} is \ldots
+
+\subsubsection{Geographic adaptive fidelity (GAF)}
+GAF\cite{xu2001geography} is \ldots{}
+
+\subsubsection{Prototype embedded network (PEN)}
+PEN\cite{girling2000design} is \ldots
+
+\subsection{Uncategorised}
+
+\subsubsection{Energy Saving Dynamic Resource Routing Protocol (ESDSR)}
+ESDSR\cite{tarique2005energy} \ldots
+\subsubsection{Local Minimum Energy Dynamic Source Routing Protocol (MEDSR)}
+MEDSR\cite{tanque2007minimum} \ldots
+
+\subsubsection{Energy Efficient Routing Protocol in MANET (EERP)}
+Suvarna and Naik introduced EERP, a routing protocol with a horribly
+generic name\cite{main2}.
+
+\section{Conclusion}
+There are many different approaches to energy-efficient routing in
+mobile ad-hoc networks. Current research seems to focus on protocols
+that minimise active communication energy, and mostly on those that
+rely on power control rather than load control.
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,manets}
+
+\end{document}
+
+
