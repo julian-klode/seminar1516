@@ -90,8 +90,8 @@ that each node does not need to know the full network topology, but each
 node needs to know its location and each source needs to know the location
 of the receiver.
 
-Geographical routing does not consider energy efficiency, as such it makes
-no sense to discuss them further.
+We will take a look at the GAF protocol, which utilises geographical
+features for routing, although with an interesting twist.
 
 \subsection{Geo-cast}
 Geo-cast routing merges multi-cast routing with geographical routing, to
@@ -186,7 +186,7 @@ Span\cite{chen2002span} is \ldots
 \subsubsection{Geographic adaptive fidelity (GAF)}
 \begin{figure}
 \includegraphics[width=0.4\textwidth]{images/gaf-grids}
-\caption{Grids in GAF}
+\caption{Grids in GAF (from \cite{alotaibi2012survey})}
 \label{gafgrids}
 \end{figure}
 GAF\cite{xu2001geography} uses the geographical (GPS) location of a node in
@@ -202,7 +202,7 @@ be put to sleep.
 
 \begin{figure}
 \includegraphics[width=0.4\textwidth]{images/gaf-states}
-\caption{Node States in GAF}
+\caption{Node States in GAF (from \cite{alotaibi2012survey})}
 \label{gafstates}
 \end{figure}
 Nodes have three states, as shown in figure~\ref{gafstates}: active for some time span $T_{a}$, in which they
