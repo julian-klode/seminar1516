@@ -5,6 +5,7 @@
 \usepackage[UKenglish]{babel}
 \usepackage{cite}
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage[cmex10]{amsmath}
 \usepackage{hyperref}
 \parskip 2ex
@@ -183,7 +184,33 @@ is reduced.
 Span\cite{chen2002span} is \ldots
 
 \subsubsection{Geographic adaptive fidelity (GAF)}
-GAF\cite{xu2001geography} is \ldots{}
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{images/gaf-grids}
+\caption{Grids in GAF}
+\label{gafgrids}
+\end{figure}
+GAF\cite{xu2001geography} uses the geographical (GPS) location of a node in
+order to position them into a virtual grid.
+
+Within each grid, the node with the highest residual energy becomes the master
+of the grid, responsible for routing messages through that grid, while the
+slave nodes can be put to sleep and will alternate between sleep and listening
+states. For example, in grid B of figure~\ref{gafgrids}, one of 2,3,4 can be the
+master of grid B and forward messages between A and B, while the other two can
+be put to sleep.
+
+
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{images/gaf-states}
+\caption{Node States in GAF}
+\label{gafstates}
+\end{figure}
+Nodes have three states, as shown in figure~\ref{gafstates}: active for some time span $T_{a}$, in which they
+act as the master of the grid; discovery for some time span $T_{d}$, in which a
+master is elected - a node becomes the master if it hears no more discover messages
+for time span $T_{d}$; and finally, a node can be sleeping.
+
+
 
 \subsubsection{Prototype embedded network (PEN)}
 PEN\cite{girling2000design} is \ldots{}
