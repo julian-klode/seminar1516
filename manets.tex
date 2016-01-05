@@ -5,10 +5,10 @@
 \usepackage[UKenglish]{babel}
 \usepackage{cite}
 \usepackage{graphicx}
-\usepackage{subfig}
+\usepackage{todonotes}
 \usepackage[cmex10]{amsmath}
 \usepackage{hyperref}
-\parskip 2ex
+\parskip 2ex % TODO Remove
 
 
 \begin{document}
@@ -63,7 +63,7 @@ other factors such as fault tolerance, scalability and performance. The only
 category in which energy efficiency is discussed is that of power-aware algorithms.
 
 
-\section{Categories}
+\section{Categories of ad-hoc routing protocols}
 Classic routing protocols are categorised in two dimensions:
 centralized/distributable and proactive/reactive.
 The unique challenges inherent in wireless ad-hoc networks led to a larger
@@ -137,23 +137,36 @@ overhead of proactive routing. In ad-hoc networks, it is implemented in
 hierarchical network architectures.
 
 \subsection{Flow-oriented}
+\todo[inline]{Describe flow-oriented routing}
 \subsection{WMN}
+\todo[inline]{Describe WMN routing}
 \subsection{Multicast}
+\todo[inline]{Describe multicast routing}
 
 \section{Survey of energy-efficient protocols}
 \subsection{Transmission power control}
+Protocols in this category try to minimise the power required to transmit
+a message.
+\todo[inline]{Give overview of strategies}
+
 \subsubsection{Flow argumentation routing (FAR)}
 Flow argumentation routing (FAR) was discussed by Chang and Tassiulas\cite{chang2000energy};
+\todo[inline]{Describe FAR}
 \subsubsection{Online max-min (OMM)}
 OMM was discussed by Li, Alsam, Rus\cite{li2001online};
+\todo[inline]{Describe OMM}
 \subsubsection{Power aware localized routing (PLR)}
 Discussed by Stojmenovic and Lin \cite{stojmenovic2001power};
+\todo[inline]{Describe PLR}
 \subsubsection{Minimum energy routing (MER)}
 Discussed by Doshi, Bhandare, Brown \cite{doshi2002demand};
+\todo[inline]{Describe MER}
 \subsubsection{Retransmission-energy aware routing (RAR)}
 Discussed by Banarjee and Misra \cite{banerjee2002minimum};
+\todo[inline]{Describe RAR}
 \subsubsection{Smallest common power (COMPOW)}
 Discussed by Narayanaswamy, Kawadia, Sreenivas and Kumar\cite{narayanaswamy2002power};
+\todo[inline]{Describe COMPOW}
 
 \subsubsection{PARO}
 The PARO Protocol\cite{gomez2003paro} introduces intermediate nodes into a
@@ -168,14 +181,17 @@ but instead focus more on distributing the power requirements among the availabl
 
 \subsubsection{Local Energy Aware Routing Protocol (LEAR)}
 Woo et al. introduced LEAR\cite{woo2001non},
+\todo[inline]{Describe LEAR}
 
 \subsubsection{Conditional max-min battery capacity routing (CMMBCR)}
 Too introduced CMMBCR\cite{toh2001maximum}.
+\todo[inline]{Describe CMMBCR}
 
 \subsubsection{Dynamic Source Routing Power-Aware (DSRPA)}
 In DSRPA\cite{djenouri2006dynamic}, nodes with the freshest battery are
 chosen to route the packages, in order to achieve connectivity for as
 long as possible.\cite{alotaibi2012survey}
+\todo[inline]{Expand on DSRPA}
 
 \subsubsection{Infra-Structure AODV for Infrastructured Ad-Hoc networks (ISAIAH)}
 ISAIAH\cite{lindgren2002infrastructured} is an ad-hoc distance vector routing
@@ -247,7 +263,9 @@ for time span $T_{d}$; and finally, a node can be sleeping.
 PAMA\cite{singh1998pamas} controls the power usage based on the activity of
 a node: Nodes that are not involved in the transmission of packages are turned
 off for some time, without even affecting the delay or throughput of the
-protcol.\cite{singh1998pamas}
+protcol.\cite{singh1998pamas} \todo[inline]{IS PAMA master-slave?}
+
+\todo[inline]{More details on PAMA}
 
 \subsubsection{Prototype embedded network (PEN)}
 PEN\cite{girling2000design} does not follow the usual master-slave scheme
@@ -268,13 +286,17 @@ can be quite high because senders need to wait for receivers to wake up.
 \subsection{Uncategorised}
 
 \subsubsection{Energy Saving Dynamic Resource Routing Protocol (ESDSR)}
-ESDSR\cite{tarique2005energy} \ldots
+ESDSR\cite{tarique2005energy} \ldots{}
+
+\todo[inline]{Categorize and describe ESDSR}
 \subsubsection{Local Minimum Energy Dynamic Source Routing Protocol (MEDSR)}
-MEDSR\cite{tanque2007minimum} \ldots
+MEDSR\cite{tanque2007minimum} \ldots{}
+\todo[inline]{Categorize and describe MEDSR}
 
 \subsubsection{Energy Efficient Routing Protocol in MANET (EERP)}
 Suvarna and Naik introduced EERP, a routing protocol with a horribly
 generic name\cite{main2}.
+\todo[inline]{Categorize and describe EERP}
 
 \section{Conclusion}
 There are many different approaches to energy-efficient routing in
@@ -298,6 +320,8 @@ and the PEN protocol. Out of these, the master-slave approach seems like the
 best choice for most networks, due to the almost-always available master nodes,
 whereas the PEN protocol is only useful for networks without much interaction,
 due to senders having to wait for destinations to be up.
+
+\todo[inline]{Final conclusion here...}
 
 
 \bibliographystyle{IEEEtran}
