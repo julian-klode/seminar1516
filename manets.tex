@@ -5,6 +5,7 @@
 \usepackage[UKenglish]{babel}
 \usepackage{cite}
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage{todonotes}
 \usepackage[cmex10]{amsmath}
 \usepackage{hyperref}
@@ -230,11 +231,18 @@ periodically check if they should become master.
 
 
 \subsubsection{Geographic adaptive fidelity (GAF)}
-\begin{figure}
-\includegraphics[width=0.4\textwidth]{images/gaf-grids}
-\caption{Grids in GAF (from \cite{alotaibi2012survey})}
-\label{gafgrids}
-\end{figure}
+\begin{figure*}[!t]
+\subfloat[Grid example]{%
+  \includegraphics[width=0.4\textwidth]{images/gaf-grids}
+  \label{gafgrids}
+}
+\hfill
+\subfloat[Node states]{%
+\includegraphics[width=0.4\textwidth]{images/gaf-states}
+\label{gafstates}
+}
+\caption{Example grid and state diagram for GAF}
+\end{figure*}
 GAF\cite{xu2001geography} uses the geographical (GPS) location of a node in
 order to position them into a virtual grid.
 
@@ -245,12 +253,6 @@ states. For example, in grid B of figure~\ref{gafgrids}, one of 2,3,4 can be the
 master of grid B and forward messages between A and B, while the other two can
 be put to sleep.
 
-
-\begin{figure}
-\includegraphics[width=0.4\textwidth]{images/gaf-states}
-\caption{Node States in GAF (from \cite{alotaibi2012survey})}
-\label{gafstates}
-\end{figure}
 Nodes have three states, as shown in figure~\ref{gafstates}: active for some time span $T_{a}$, in which they
 act as the master of the grid; discovery for some time span $T_{d}$, in which a
 master is elected - a node becomes the master if it hears no more discover messages
