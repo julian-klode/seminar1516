@@ -136,7 +136,7 @@ hierarchical network architectures.
 \subsection{WMN}
 \subsection{Multicast}
 
-\section{Protocol survey}
+\section{Survey of energy-efficient protocols}
 \subsection{Transmission power control}
 \subsubsection{Flow argumentation routing (FAR)}
 Flow argumentation routing (FAR) was discussed by Chang and Tassiulas\cite{chang2000energy};
@@ -168,6 +168,16 @@ In DSRPA\cite{djenouri2006dynamic}, nodes with the freshest battery are
 chosen to route the packages, in order to achieve connectivity for as
 long as possible.\cite{alotaibi2012survey}
 
+\subsubsection{Infra-Structure AODV for Infrastructured Ad-Hoc networks (ISAIAH)}
+ISAIAH\cite{lindgren2002infrastructured} is an ad-hoc distance vector routing
+algorithm. It routes similar to AODV, but selects routes that pass through
+so called power base station (PBS) instead of mobile nodes, in order to reduce
+the power consumption of the mobile nodes.
+
+As with PARO, the routes chosen by this algorithm are longer than needed, but
+because more nodes are stationary, the power consumption on the mobile nodes
+is reduced.
+
 \subsection{Sleep/power­ down mode}
 \subsubsection{SPAN}
 Span\cite{chen2002span} is \ldots
@@ -181,7 +191,8 @@ PEN\cite{girling2000design} is \ldots{}
 \subsubsection{Power-Aware Multi-Access Protocol with Signaling Ad-Hoc Networks (PAMAS)}
 PAMA\cite{singh1998pamas} controls the power usage based on the activity of
 a node: Nodes that are not involved in the transmission of packages are turned
-off for some time.
+off for some time, without even affecting the delay or throughput of the
+protcol.\cite{singh1998pamas}
 
 \subsection{Uncategorised}
 
