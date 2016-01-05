@@ -25,9 +25,9 @@ Mobile Ad-Hoc networks are blah blah.
 
 
 \section{Introduction}
-Mobile Ad-Hoc networks represent a unique amount of challenges for routing
-protocols because of their flexible nature, battery driven nodes. One example
-for ad-hoc networks, albeit not that mobile, are wireless sensor networks.
+Mobile ad-hoc networks present a number of unique challenges for routing protocols.
+Their nodes are battery-powered and non-stationary, requiring flexible network architecture.
+One example for ad-hoc networks, albeit not particularly mobile, are wireless sensor networks.
 
 Routing protocols in such networks need to consider several important key
 factors:
@@ -66,6 +66,21 @@ The unique challenges inherent in wireless ad-hoc networks led to a larger
 amount of categories, which are not always necessarily disjoint, meaning
 that an algorithm may belong to one or more categories.
 
+\subsection{Basics: Proactive routing}
+In proactive routing algorithms, each router builds its routing table by
+(regularly) exchanging messages with other routers in the network.
+
+This has the advantage that routing information is already available when a
+package is to be routed.
+A huge disadvantage of proactive routing protocols is the overhead imposed
+by the exchange of the update messages.
+
+\subsection{Basics: Reactive routing}
+In a reactive routing algorithm, routes are discovered when a packet arrives
+from a source and needs to be delivered to some destination.
+While the routes need to be discovered more often than in proactive algorithms,
+there is no traffic overhead due to the lack of special control messages, and
+as such, the reactive approach is considered to scale better.
 
 \subsection{Geographical routing}
 The basic idea behind geographical routing is that nodes are addressed by
@@ -111,6 +126,11 @@ by controlling the power used for transmission, or by load control -- and
 algorithms that try to minimise the inactivity energy, for example, by putting
 rarely used nodes to sleep.
 
+\subsection{Hybrid}
+A hybrid protocol starts off as a proactive routing protocol but switches
+to reactive routing for newly added nodes in order to reduce the control
+overhead of proactive routing. In ad-hoc networks, it is implemented in
+hierarchical network architectures.
 
 \section{Protocol survey}
 \subsection{Transmission power control}
