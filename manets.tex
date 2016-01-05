@@ -10,7 +10,7 @@
 \usepackage[cmex10]{amsmath}
 \usepackage{hyperref}
 %\parskip 2ex % TODO Remove
-
+\usepackage{dblfloatfix}
 
 \begin{document}
 \title{Energy-efficient Routing Protocols for Mobile ad-hoc Networks}
@@ -157,8 +157,40 @@ Flow argumentation routing (FAR) was discussed by Chang and Tassiulas\cite{chang
 OMM was discussed by Li, Alsam, Rus\cite{li2001online};
 \todo[inline]{Describe OMM}
 \subsubsection{Power aware localized routing (PLR)}
-Discussed by Stojmenovic and Lin \cite{stojmenovic2001power};
-\todo[inline]{Describe PLR}
+PLR\cite{stojmenovic2001power} is a geographical routing protocol, at least
+to a certain extend, that tries to minimise the overall power usage. Each node
+selects the next hop based on the power required for sending to this node, and
+sending from that node indirectly to the destination.
+
+For this, it has to know the locations of the next hops and the location of
+the destinations. Based on the locations and the distance between the locations,
+it can then estimate the power usage.
+
+For direct connections, this is:
+\( p(d) := ad^{\alpha} + c \)
+for some constants $a$ and $c$ and some $\alpha > 2$ (that is, power usage
+is at least growing quadratic in relation to the distance).
+
+For indirect communication between the next hop and the final destination,
+the power usage can be calculated as:
+\begin{align*}
+   q(d) &:= cn + da \left(\frac{a(\alpha - 1)}{c}\right)^{(1-\alpha)/\alpha} \\
+  \intertext{for some}
+      n &= d\left(\frac{(a(\alpha - 1))}{c}\right)^{1/\alpha},
+\end{align*}
+where $n-1$ is the optimal number of intermediate nodes\cite{stojmenovic2001power}.
+
+So, given an example like figure~\ref{plrexample} with a source node $A$, neighbours $N_{1}$, $N_{2}$, and $N_{3}$, and a
+destination $D$, $A$ should chose the next hop as the $N_{i}$ for which
+$p(|AN_{i}|) + q(|N_{i}D|)$ is minimal.
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/plr-example}
+\caption{Selection of next hop in PLR (from \cite{alotaibi2012survey})}
+\label{plrexample}
+\end{figure*}
+
 \subsubsection{Minimum energy routing (MER)}
 Discussed by Doshi, Bhandare, Brown \cite{doshi2002demand};
 \todo[inline]{Describe MER}
@@ -215,11 +247,11 @@ We will take a look at three master slaves protocols: SPAN, GAF, and PAMA;
 and at one protocol called PEN that has no concept of master and slave nodes.
 
 \subsubsection{SPAN}
-\begin{figure}
-\includegraphics[width=0.4\textwidth]{images/span-master-example}
+\begin{figure*}
+\includegraphics[width=0.8\textwidth]{images/span-master-example}
 \caption{Master eligibility rule in the SPAN protocol. (from \cite{alotaibi2012survey})}
 \label{spanmaster}
-\end{figure}
+\end{figure*}
 In Span\cite{chen2002span}, a master is selected based on the following rule:
 A node becomes a master if two of its neighbors cannot reach each other directly
 or via one or two masters. For example, in figure~\ref{spanmaster}, nodes B and
@@ -233,12 +265,12 @@ periodically check if they should become master.
 \subsubsection{Geographic adaptive fidelity (GAF)}
 \begin{figure*}[!t]
 \subfloat[Grid example]{%
-  \includegraphics[width=0.4\textwidth]{images/gaf-grids}
+  \includegraphics[width=0.46\textwidth]{images/gaf-grids}
   \label{gafgrids}
 }
 \hfill
 \subfloat[Node states]{%
-\includegraphics[width=0.4\textwidth]{images/gaf-states}
+\includegraphics[width=0.46\textwidth]{images/gaf-states}
 \label{gafstates}
 }
 \caption{Example grid and state diagram for GAF from \cite{alotaibi2012survey}}
