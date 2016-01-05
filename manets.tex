@@ -21,7 +21,10 @@ Email:\href{mailto:klode@mathematik.uni-marburg.de}{klode@mathematik.uni-marburg
 
 
 \begin{abstract}
-Mobile Ad-Hoc networks are blah blah.
+Mobile Ad-Hoc networks, with battery-powered nodes, require energy efficient
+routing protocols in order to reduce the power consumption of nodes. We will
+take a look at which categories of energy-efficient routing protocols exist,
+and show examples for each category.
 \end{abstract}
 
 
@@ -180,8 +183,30 @@ because more nodes are stationary, the power consumption on the mobile nodes
 is reduced.
 
 \subsection{Sleep/power­ down mode}
+Algorithms in this category try to minimise the time a node is active, and
+maximise the time a node is at sleep. A common apprach to do this is to select
+one or more masters from a set of nodes which take over the routing functionality
+while the others can safely sleep. In such a scheme, nodes periodically wake up
+and elect a new master if the current one goes away.
+
+We will take a look at three master slaves protocols: SPAN, GAF, and PAMA;
+and at one protocol called PEN that has no concept of master and slave nodes.
+
 \subsubsection{SPAN}
-Span\cite{chen2002span} is \ldots
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{images/span-master-example}
+\caption{Master eligibility rule in the SPAN protocol. (from \cite{alotaibi2012survey})}
+\label{spanmaster}
+\end{figure}
+In Span\cite{chen2002span}, a master is selected based on the following rule:
+A node becomes a master if two of its neighbors cannot reach each other directly
+or via one or two masters. For example, in figure~\ref{spanmaster}, nodes B and
+D become masters.
+
+In order to prevent or reduce overloading of masters, masters periodically
+check whether they should withdraw from being master; and non-master nodes
+periodically check if they should become master.
+
 
 \subsubsection{Geographic adaptive fidelity (GAF)}
 \begin{figure}
@@ -212,14 +237,28 @@ for time span $T_{d}$; and finally, a node can be sleeping.
 
 
 
-\subsubsection{Prototype embedded network (PEN)}
-PEN\cite{girling2000design} is \ldots{}
 
 \subsubsection{Power-Aware Multi-Access Protocol with Signaling Ad-Hoc Networks (PAMAS)}
 PAMA\cite{singh1998pamas} controls the power usage based on the activity of
 a node: Nodes that are not involved in the transmission of packages are turned
 off for some time, without even affecting the delay or throughput of the
 protcol.\cite{singh1998pamas}
+
+\subsubsection{Prototype embedded network (PEN)}
+PEN\cite{girling2000design} does not follow the usual master-slave scheme
+used by the other protocols. Nodes periodically wake up, advertise their
+by broadcast messages, and then listen for any communication requests before
+powering down again.
+
+A sending node waits until it receives a broadcast message from the intended
+destination, then sends a communication request to the destination during
+the destinations listening period. Finally, it starts the communication.
+
+This scheme easily avoids the cost of selecting a master and of overloaded
+masters. It is only effective for networks without much traffic, as the delay
+can be quite high because senders need to wait for receivers to wake up.
+
+
 
 \subsection{Uncategorised}
 
@@ -237,6 +276,23 @@ There are many different approaches to energy-efficient routing in
 mobile ad-hoc networks. Current research seems to focus on protocols
 that minimise active communication energy, and mostly on those that
 rely on power control rather than load control.
+
+We have seen various ways to minimise the energy required for sending
+messages, for example, PARO, which introduces closer intermediate nodes,
+in order to reduce the distance between nodes, and thus their
+power consumption.
+
+We have taken a look at various load distribution algorithms that distribute
+the load according to the energy levels of the routers. Especially if not all
+nodes in an ad-hoc network are mobile, this approach makes sense: It is
+pointless to deliver messages through battery-driven routers when they can
+also be forwarded by stationary nodes that are connected to a power supply.
+
+We have seen two basic approaches to sleep/power-down optimisation, master-slave
+and the PEN protocol. Out of these, the master-slave approach seems like the
+best choice for most networks, due to the almost-always available master nodes,
+whereas the PEN protocol is only useful for networks without much interaction,
+due to senders having to wait for destinations to be up.
 
 
 \bibliographystyle{IEEEtran}
