@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 %\parskip 2ex % TODO Remove
 \usepackage{dblfloatfix}
+\usepackage{xfrac}
 
 \begin{document}
 \title{Energy-efficient Routing Protocols for Mobile ad-hoc Networks}
@@ -174,9 +175,8 @@ is at least growing quadratic in relation to the distance).
 For indirect communication between the next hop and the final destination,
 the power usage can be calculated as:
 \begin{align*}
-   q(d) &:= cn + da \left(\frac{a(\alpha - 1)}{c}\right)^{(1-\alpha)/\alpha} \\
-  \intertext{for some}
-      n &= d\left(\frac{(a(\alpha - 1))}{c}\right)^{1/\alpha},
+   q(d) &:= cn + da \left(\sfrac{a(\alpha - 1)}{c}\right)^{\sfrac{(1-\alpha)}{\alpha}}, \\
+      n &:= d\left(\sfrac{(a(\alpha - 1))}{c}\right)^{\sfrac{1}{\alpha}};
 \end{align*}
 where $n-1$ is the optimal number of intermediate nodes\cite{stojmenovic2001power}.
 
