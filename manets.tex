@@ -171,7 +171,7 @@ OMM \cite{li2001online} maximises the network lifetime using two metrics:
 First OMM calculates the \textit{min-power} path using Dijkstra’s algorithm. Let
 the power required by that be $P_{min}$.
 Then it determines the \textit{max-min} paths by looking at all paths whose
-power do not deviate much from the min-power path, that is, less than $zP_{min}$
+power do not deviate much from the min-power path, that is, less than $zP_{\min}$
 for some $z \ge 1$. It calculates the minimum residual power of all nodes
 after the transmission would have taken place, and chooses the path where
 that value is largest.
@@ -186,6 +186,16 @@ Looking at the alternate paths, we see that $S \to C \to D$ will have a
 minimum residual energy of $30-20=10$ in node $C$, and $S \to A \to D$ will
 have a minimum residual energy of $25-10$ in node $A$.
 Thus, the max-min path is $S \to A \to D$.
+
+Choosing a good value for $z$ in $zP_{\min}$ is important: For $z=1$, only
+the min-power path is considered; for $z \to \inf$, all paths can be
+considered. The algorithm starts with a \textit{random} value for $z$, and
+then measures the residual energy (\textit{lifetime}) of of the most overloaded node during some
+fixed time period. Afterwards, the value of $z$ is increased by a small constant
+and the lifetime is measured again. If the lifetime increases, the value of $z$
+is increased, otherwise, it is decreased. Because the lifetime is measured
+in two distinct time periods, it is assumed that load distribution is roughly
+similar, otherwise the results might not be really useful.
 
 \subsubsection{Power aware localized routing (PLR)}
 PLR\cite{stojmenovic2001power} is a geographical routing protocol, at least
