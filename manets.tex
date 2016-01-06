@@ -155,8 +155,36 @@ a message.
 Flow argumentation routing (FAR) was discussed by Chang and Tassiulas\cite{chang2000energy};
 \todo[inline]{Describe FAR}
 \subsubsection{Online max-min (OMM)}
-OMM was discussed by Li, Alsam, Rus\cite{li2001online};
-\todo[inline]{Describe OMM}
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/omm}
+\caption{Paths in OMM (from \cite{alotaibi2012survey})}
+\label{ommex}
+\end{figure*}
+
+OMM \cite{li2001online} maximises the network lifetime using two metrics:
+\begin{enumerate}
+  \item \textbf{min-power} - Minimising the overall power
+  \item \textbf{max-min} - Maximising the minimum residual power
+\end{enumerate}
+
+First OMM calculates the \textit{min-power} path using Dijkstra’s algorithm. Let
+the power required by that be $P_{min}$.
+Then it determines the \textit{max-min} paths by looking at all paths whose
+power do not deviate much from the min-power path, that is, less than $zP_{min}$
+for some $z \ge 1$. It calculates the minimum residual power of all nodes
+after the transmission would have taken place, and chooses the path where
+that value is largest.
+
+For example, in figure~\ref{ommex}, we can see that the min-power path $S \to B \to D$
+has a cost of 18. It's minimum residual energy will be $2$, as node $B$ needs
+$8$ out of the $10$ power units it has.
+
+Looking at the alternate paths, we see that $S \to C \to D$ will have a
+minimum residual energy of $30-20=10$ in node $C$, and $S \to A \to D$ will
+have a minimum residual energy of $25-10$ in node $A$.
+Thus, the max-min path is $A$.
+
 \subsubsection{Power aware localized routing (PLR)}
 PLR\cite{stojmenovic2001power} is a geographical routing protocol, at least
 to a certain extend, that tries to minimise the overall power usage. Each node
