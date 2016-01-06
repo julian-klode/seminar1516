@@ -176,14 +176,16 @@ for some $z \ge 1$. It calculates the minimum residual power of all nodes
 after the transmission would have taken place, and chooses the path where
 that value is largest.
 
-For example, in figure~\ref{ommex}, we can see that the min-power path $S \to B \to D$
-has a cost of 18. It's minimum residual energy will be $2$, as node $B$ needs
+For example, in figure~\ref{ommex}, we can see that the min-power path from
+$S$ to $D$ is $S \to B \to D$ with a value of 18 ($S \to A \to D$ has 20,
+$S \to C \to D$ has 30).
+It's minimum residual energy will be $2$, as node $B$ needs
 $8$ out of the $10$ power units it has.
 
 Looking at the alternate paths, we see that $S \to C \to D$ will have a
 minimum residual energy of $30-20=10$ in node $C$, and $S \to A \to D$ will
 have a minimum residual energy of $25-10$ in node $A$.
-Thus, the max-min path is $A$.
+Thus, the max-min path is $S \to A \to D$.
 
 \subsubsection{Power aware localized routing (PLR)}
 PLR\cite{stojmenovic2001power} is a geographical routing protocol, at least
