@@ -232,8 +232,49 @@ $p(|AN_{i}|) + q(|N_{i}D|)$ is minimal.
 \end{figure*}
 
 \subsubsection{Minimum energy routing (MER)}
-Discussed by Doshi, Bhandare, Brown \cite{doshi2002demand};
-\todo[inline]{Describe MER}
+MER\cite{doshi2002demand} modifies the dynamic-source-routing (DSR)\cite{johnson1996dynamic}
+and 802.11 MAC algorithms\cite{woesner1998power} with 8 options\ref{tbl:mer-options} in order to
+(1) obtain power information, (2) measure overhead of energy-awareness, and
+(3) maintain the minimum power route with mobile nodes.
+
+\begin{table}[tb]
+  \begin{tabular}{ll}
+    Options & Implementation Level  \\
+    \hline
+    A: Routing packet-based power control & Routing software/\\ &802.11 firmware \\
+    B: Minimum energy routing & Routing software \\
+    C: Cache replies off & Routing software \\
+    D: Internal cache options & Routing software \\
+    E: Multi-hop route discovery & Routing software \\
+    F: MAC layer ACK power control & 802.11 firmware \\
+    G: Route Maintenance with power sensing & Routing software \\
+    G: HMAC-Level snooping and gratious replies & 802.11 firmware \\
+  \end{tabular}
+  \caption{Options in MER}
+  \label{tbl:mer-options}
+\end{table}
+
+Option $A$ modifies \textit{route-request} packages of the DSR protocol to
+include the power used by the sender, which can the be added to the power
+of the receiver to calculate the minimum power required for transmissions
+from that sender to it. The value is appended at each intermediate node, and the
+destination node then includes it in its \textit{route-reply} header.
+
+The source node than includes this information when it's sending a packet, and
+all nodes transmit that package with the controlled power level.
+
+Option F does the same for the MAC layer's ACK packets.
+
+Option $B$ is related to the route cache of the DSR protocol ($C$ and $D$ as well). It
+uses the information obtained by option $A$ to select the route that requires
+the minimum energy amongst its cached routes.
+
+Option $G$ takes care of adjusting routes when the power transmittion requirements
+change because nodes moved.
+
+Option $E$ and $H$ allow nodes not participating in the routing to recommend
+alternative, more energy-efficient, routes.
+
 \subsubsection{Retransmission-energy aware routing (RAR)}
 Discussed by Banarjee and Misra \cite{banerjee2002minimum};
 \todo[inline]{Describe RAR}
