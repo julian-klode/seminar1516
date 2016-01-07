@@ -13,13 +13,21 @@
 \usepackage{dblfloatfix}
 \usepackage{xfrac}
 
+\hypersetup{
+  pdftitle    = {Energy-efficient Routing Protocols for Mobile ad-hoc Networks},
+  pdfauthor   = {Julian Andres Klode},
+  pdfcreator  = {pdflatex on Debian GNU/Linux},
+  pdfproducer = {LaTeX on Debian GNU/Linux}
+}
+
 \begin{document}
-\title{Energy-efficient Routing Protocols for Mobile ad-hoc Networks}
+\title{Energy-efficient Routing Protocols for Mobile Ad-hoc Networks}
 \author{\IEEEauthorblockN{Julian Andres Klode}
 \IEEEauthorblockA{Philips-Universität Marburg \\
 Email:\href{mailto:klode@mathematik.uni-marburg.de}{klode@mathematik.uni-marburg.de}}}
 
 \maketitle
+
 
 
 \begin{abstract}
@@ -294,12 +302,32 @@ They do not try as much as the other algorithms to minimise the power required,
 but instead focus more on distributing the power requirements among the available (routing) nodes.
 
 \subsubsection{Local Energy Aware Routing Protocol (LEAR)}
-Woo et al. introduced LEAR\cite{woo2001non},
-\todo[inline]{Describe LEAR}
+LEAR\cite{woo2001non} is a variation of DSR.
+Its main behavioural change lies in the forwarding of \textit{route-request} messages.
+In LEAR, nodes only forward \textit{route-request} messages if their residual
+energy level is above a certain threshold. Otherwise, the message is dropped
+and the node does not take part in forwarding packages.
+
+The threshold value is defined locally and changes with the time, decreasing
+as the battery level decreases. If a source does not get a reply to its
+route-request message, it will resend it. Nodes receiving the message multiple
+times then lower their threshold value to allow the forwarding to continue.
+
+DSR also employs a route cache. Obviously, just returning an existing node
+from the route cache would not take energy level changes into consideration.
+Thus, when a route is found in the cache, a new message called \textit{route-cache}
+is sent via unicast to the next hop, which then forwards it to the end. This
+produces far left traffic than the broadcast \textit{route-request} messages.
 
 \subsubsection{Conditional max-min battery capacity routing (CMMBCR)}
-Too introduced CMMBCR\cite{toh2001maximum}.
-\todo[inline]{Describe CMMBCR}
+Like LEAR, CMMBCR\cite{toh2001maximum} uses a threshold level to optimize
+the energy effiency of its routing.
+Unlike LEAR, the threshold is fixed, though.
+
+If all nodes in some paths have higher residual energy than the threshold,
+the min-power path is chosen.
+If all routes have nodes with a residual energy lower than the threshold the
+max-min route will be selected.
 
 \subsubsection{Dynamic Source Routing Power-Aware (DSRPA)}
 In DSRPA\cite{djenouri2006dynamic}, nodes with the freshest battery are
