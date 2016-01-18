@@ -156,8 +156,10 @@ hierarchical network architectures.
 \section{Survey of energy-efficient protocols}
 \subsection{Transmission power control}
 Protocols in this category try to minimise the power required to transmit
-a message.
-\todo[inline]{Give overview of strategies}
+a message. This class of algorithm is akin to a graph optimisation problem,
+with the nodes in the MANET being nodes in a graph, the power required for
+transmitting over a link $p_{ij}$ being the cost of a vertex, and the goal
+to search the minimum-cost path between two nodes.
 
 \subsubsection{Flow argumentation routing (FAR)}
 Flow argumentation routing (FAR)\cite{chang2000energy} finds the routing
