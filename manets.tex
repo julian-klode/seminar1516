@@ -303,6 +303,28 @@ change because nodes moved.
 
 Option $E$ and $H$ allow nodes not participating in the routing to recommend
 alternative, more energy-efficient, routes.
+\subsubsection{Local Minimum Energy Dynamic Source Routing Protocol (MEDSR)}
+MEDSR\cite{tanque2007minimum} modifies the messages of the DSR protocol to
+provide zero-overhead (as in: no extra control messages) energy-aware routing.
+
+MEDSR uses two power levels for route discovery: A low one, and a high one. If
+the source does not receive a reply for three route request messages at low
+power, it switches to the high power level.
+
+In contrast to other algorithms like MER, it only stores one power level field
+in the packets, rather than one power-level per link. That power level is stored
+in amended route request and route reply packets.
+
+When a node $C$ receives a route reply from a node $D$, it can estimate the
+power level required for transmitting to $D$ by calculating:
+\[ P_{min} = P_{tx} - P_{recv} + P_{th} \]
+where $P_{tx}$ is the transmit power of $D$, $P_{recv}$ the receive power of $C$,
+and $P_{th}$ is the threshold power for a successful receive. In 802.11, that's
+usually $3.652 \cdot 10^{-10}$ watt. In order to avoid instability of the link, a margin is added
+\[ P_{min} = P_{tx} - P_{recv} + P_{th} + P_{margin}\].{}
+
+In addition to the usual tables maintained by DSR, MEDSR also stores a power
+table at each node: For each node, the minimum power required to reach it.
 
 \subsubsection{Retransmission-energy aware routing (RAR)}
 Transmissions may have link errors which require re-transmitting packets over
@@ -338,28 +360,6 @@ The PARO Protocol\cite{gomez2003paro} introduces intermediate nodes into a
 route, increasing the length of the route, in order to reduce the transmission
 power required by each node.
 
-\subsubsection{Local Minimum Energy Dynamic Source Routing Protocol (MEDSR)}
-MEDSR\cite{tanque2007minimum} modifies the messages of the DSR protocol to
-provide zero-overhead (as in: no extra control messages) energy-aware routing.
-
-MEDSR uses two power levels for route discovery: A low one, and a high one. If
-the source does not receive a reply for three route request messages at low
-power, it switches to the high power level.
-
-In contrast to various other algorithms, it only stores one power level field
-in the packets, rather than one power-level per link. That power level is stored
-in amended route request and route reply packets.
-
-When a node $C$ receives a route reply from a node $D$, it can estimate the
-power level required for transmitting to $D$ by calculating:
-\[ P_{min} = P_{tx} - P_{recv} + P_{th} \]
-where $P_{tx}$ is the transmit power of $D$, $P_{recv}$ the receive power of $C$,
-and $P_{th}$ is the threshold power for a successful receive. In 802.11, that's
-usually $3.652 \cdot 10^{-10}$ watt. In order to avoid instability of the link, a margin is added
-\[ P_{min} = P_{tx} - P_{recv} + P_{th} + P_{margin}\].{}
-
-In addition to the usual tables maintained by DSR, MEDSR also stores a power
-table at each node: For each node, the minimum power required to reach it.
 
 \subsection{Load distribution}
 Power-aware load distribution (or `control') algorithms distribute the the
