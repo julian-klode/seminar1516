@@ -160,8 +160,20 @@ a message.
 \todo[inline]{Give overview of strategies}
 
 \subsubsection{Flow argumentation routing (FAR)}
-Flow argumentation routing (FAR) was discussed by Chang and Tassiulas\cite{chang2000energy};
-\todo[inline]{Describe FAR}
+Flow argumentation routing (FAR)\cite{chang2000energy} finds the routing
+path in a (static) network that minimises the sum of link costs in the network,
+where the link cost between $i$ and $j$ is defined as \( e_{ij}^{x_{i}}E_{i}^{x_{2}}R_{i}^{-x_{3}}\);
+\(e_{ij}\) is the energy cost for the transmission, $E_{i}$ is the initial energy
+of the node $i$ and $R_{i}$ is the residue energy of the node. \(x_{1}, x_{2}, x_{3}\)
+are weighting factors. As an example, if $x_{1}=x_{2}=x_{3}=0$, then the cost
+of each link is 1, and the optimal path is the shortest distance path.
+
+In a static wireless network, $E_{i}$ and $e_{ij}$ are constant, but $R_{i}$
+continues to decrease. Thus, the optimal link at one point in time might not be the
+optimal link at a different point in time. FAR solves this problem iteratively:
+Calculating the optimal path at each step, after updating the residual energy
+and link costs.
+
 \subsubsection{Online max-min (OMM)}
 \begin{figure*}
 \centering
