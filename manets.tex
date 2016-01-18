@@ -347,7 +347,15 @@ of communication in the network.
 It does so by maintaining a smallest common transmission power for all nodes,
 chosen so that all nodes can communicate with each other. If the power is too
 low, some nodes could not reach some others, if it is too high, there might be
-many redundant paths.
+many redundant paths. See figure~\ref{compow:power-choice}.
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/compow-level-choice}
+\caption{Power choice in COMPOW: (a) too low, (b) too high, (c) optimal}
+\label{compow:power-choice}
+\end{figure*}
 
 COMPOW assumes a discrete set of power levels $P_{i}$ and maintains routing
 tables ${RT}_{P_{i}}$ containing all nodes reachable from the current one. The
