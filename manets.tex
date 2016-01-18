@@ -296,11 +296,33 @@ Option $E$ and $H$ allow nodes not participating in the routing to recommend
 alternative, more energy-efficient, routes.
 
 \subsubsection{Retransmission-energy aware routing (RAR)}
-Discussed by Banarjee and Misra \cite{banerjee2002minimum};
-\todo[inline]{Describe RAR}
+Transmissions may have link errors which require re-transmitting packets over
+a link. A path with many short links might be more efficient than a path with
+few long distance links in the absence of link errors, but with link errors,
+things might look different, because some packets need to be re-transmitted.
+
+RAR\cite{banerjee2002minimum} modifies the cost/power requirement of a link $p_{i,i+1}$ by including the error rate of that
+link $e_{i,i+1}$. That modified link cost $P_{i,i+1}$ is defined as
+\[ P_{i,i+1} = \underbrace{p_{i,i+1}}_{\text{original link cost}} \cdot \underbrace{\sfrac{1}{\overbrace{(1-e_{i,i+1})}^{\text{success rate}}}}_{\text{expected number of tries}}. \]
+
 \subsubsection{Smallest common power (COMPOW)}
-Discussed by Narayanaswamy, Kawadia, Sreenivas and Kumar\cite{narayanaswamy2002power};
-\todo[inline]{Describe COMPOW}
+Network protocols often require handshaking of some sorts, like acknowledgements
+sent to a sender for his packages. Thus, for a MANET to be reliable for those
+protocols, for every two nodes, there must be routes in both directions, that
+is, some form of bi-directionality.
+
+The smallest common power\cite{narayanaswamy2002power} achieves bi-directionality
+of communication in the network.
+It does so by maintaining a smallest common transmission power for all nodes,
+chosen so that all nodes can communicate with each other. If the power is too
+low, some nodes could not reach some others, if it is too high, there might be
+many redundant paths.
+
+COMPOW assumes a discrete set of power levels $P_{i}$ and maintains routing
+tables ${RT}_{P_{i}}$ containing all nodes reachable from the current one. The
+optimal power level $P_{i}$ can be determined as the smallest one for which
+$\mid RT_{P_{i}} \mid$ is equal to the number of nodes in the network, by
+exchanging the routing tables between nodes.
 
 \subsubsection{PARO}
 The PARO Protocol\cite{gomez2003paro} introduces intermediate nodes into a
