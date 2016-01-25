@@ -1,0 +1,21 @@
+There are many different approaches to energy-efficient routing in
+mobile ad-hoc networks. Current research seems to focus on protocols
+that minimise active communication energy, and mostly on those that
+rely on power control rather than load control.
+
+We have seen various ways to minimise the energy required for sending
+messages, for example, PARO, which introduces closer intermediate nodes,
+in order to reduce the distance between nodes, and thus their
+power consumption.
+
+We have taken a look at various load distribution algorithms that distribute
+the load according to the energy levels of the routers. Especially if not all
+nodes in an ad-hoc network are mobile, this approach makes sense: It is
+pointless to deliver messages through battery-driven routers when they can
+also be forwarded by stationary nodes that are connected to a power supply.
+
+We have seen two basic approaches to sleep/power-down optimisation, master-slave
+and the PEN protocol. Out of these, the master-slave approach seems like the
+best choice for most networks, due to the almost-always available master nodes,
+whereas the PEN protocol is only useful for networks without much interaction,
+due to senders having to wait for destinations to be up.

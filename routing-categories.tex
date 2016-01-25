@@ -1,0 +1,85 @@
+Classic routing protocols are categorised in two dimensions:
+centralized/distributable and proactive/reactive.
+The unique challenges inherent in wireless ad-hoc networks led to a larger
+amount of categories, which are not always necessarily disjoint, meaning
+that an algorithm may belong to one or more categories.
+
+\subsection{Basics: Proactive routing}
+In proactive routing algorithms, each router builds its routing table by
+(regularly) exchanging messages with other routers in the network.
+
+This has the advantage that routing information is already available when a
+package is to be routed.
+A huge disadvantage of proactive routing protocols is the overhead imposed
+by the exchange of the update messages.
+
+\subsection{Basics: Reactive routing}
+In a reactive routing algorithm, routes are discovered when a packet arrives
+from a source and needs to be delivered to some destination.
+While the routes need to be discovered more often than in proactive algorithms,
+there is no traffic overhead due to the lack of special control messages, and
+as such, the reactive approach is considered to scale better.
+
+\subsection{Geographical routing}
+The basic idea behind geographical routing is that nodes are addressed by
+their geographic location instead of an IP address. This has the advantage
+that each node does not need to know the full network topology, but each
+node needs to know its location and each source needs to know the location
+of the receiver.
+
+We will take a look at the GAF protocol, which utilises geographical
+features for routing, although with an interesting twist.
+
+\subsection{Geo-cast}
+Geo-cast routing merges multi-cast routing with geographical routing, to
+deliver messages to a group of nodes identified by their locations.
+
+\subsection{Hierarchical RA}
+A hierarchical routing algorithm defines multiple zones or clusters with
+gateways that connect them with each other. Inside a cluster, there often
+are one or more cluster heads, that are responsible for maintaining the
+connectivity within the cluster. Non-head nodes can only communicate with
+their cluster heads, whereas gateway nodes can exchange information with
+other clusters.
+
+
+\subsection{Multi-path}
+In a multi-path routing algorithms, multiple paths exists from one source
+to a destination. The obvious advantages of a multi-path routing
+algorithm include fault tolerance (if one path fails, another is still in
+use), load distribution (congested routes can be avoided by chosing alternative
+routes), peak performance (multiple routes may be used in parallel for different
+parts of data).
+
+Energy-efficiency is not a paramount concern of most multi-path routing, the
+load balancing idea can however not only be applied to performance, but also
+to power levels, to distribute the power used within the network, as we will
+see later on. Such an algorithm would of course also be power-aware.
+
+\subsection{Power-aware}
+A power-aware routing algorithm tries to find a good trade off between
+power consumption of nodes and mobility. \cite{main1} describes two categories
+of power-aware protocols: those that try to minimise the active communication energy -- either
+by controlling the power used for transmission, or by load control -- and
+algorithms that try to minimise the inactivity energy, for example, by putting
+rarely used nodes to sleep.
+
+\subsection{Hybrid}
+A hybrid protocol starts off as a proactive routing protocol but switches
+to reactive routing for newly added nodes in order to reduce the control
+overhead of proactive routing. In ad-hoc networks, it is implemented in
+hierarchical network architectures.
+
+\subsection{Flow-oriented}
+As its name says, a flow-oriented routing looks at a flow of packets rather
+than individual packets. A flow usually being one end-to-end-connection.
+
+\subsection{WMN}
+WMN routing algorithms are routing algorithms for wireless mesh networks.
+
+\subsection{Multicast}
+Multicast routing algorithms are simply routing algorithms for multicast
+groups.
+One example for a multicast routing algorithm is multicast ad-hoc on-demand
+distance vector (MAODV)\cite{manet-maodv-00}, which is currently a work
+in progress internet-draft.
