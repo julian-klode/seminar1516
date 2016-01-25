@@ -4,12 +4,46 @@ DSRPA\cite{djenouri2006new} defines a power-aware variation of dynamic source
 routing. It trades of battery freshness and power consumption by defining a
 metric on which it bases its routing.
 
-\todo[inline]{Define metric}
+Power consumption is reduced by recording the transmission power in route
+request messages and then using that value and the reception power to calculate
+the required power at the receiver side.
 
-It also disperses data over multiple routes.
-While normal DSR only uses the optimal route,
-DSRPA will also use non-optimal routes to distribute the load of the network. It
-does this similar to a process scheduler in UNIX.
+Nodes can share their power state by broadcasting in its neighbourhood a special
+$E_{state}$ packet that contains the current power value. This packet is send
+each time a certain percentage of power has been consumed. For example, if the
+rate is set to $25\%$, a packet will be sent after 25, 50, and 75 per cent of
+power consumed.
+
+The metric representing the optimality of a a route $C=I_{0}, \ldots, I_{n-1}$
+is defined as:
+
+\[ Opt_{c} := \sum_{i=0}^{n-2} \frac{\alpha}{1-eng(I_{i})} + \frac{1-\alpha}{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}} \]
+{}
+where
+\begin{itemize}
+    \item $eng(I_{i}) \in [0,1]$ is the rate of energy consumed by $I_{i}$,
+    \item $Pow(I_{i}, I_{i+1})$ is the power required for the link from $I_{i}$ to $I_{i+1}$, and
+    \item $MaxPow(I_{i})$ is the maximum power of the node $I_{i}$, that is, the power that allows
+          it to cover its power range.
+\end{itemize}
+
+Furthermore, the function (in time) $\alpha$ can be defined as:
+\[ \alpha = \sqrt{(1-\alpha_{0})^{2} \cdot EngDiff + \alpha_{0}} \]
+where $EngDiff \in [0,1]$ is the difference between the maximum and minimum rate
+of energy consumed in the network and $\alpha_{0}$ some initial value.
+
+This has two effects: If the difference in battery energy states increases, the
+value of $\alpha$ increases. This counters the increasing difference between
+battery energy states, because the more $\alpha$ increases, the more nodes
+with fresh batteries are preferred (and the more $\alpha$ decreases, the more
+min-power nodes are preferred).
+
+DSRPA disperses data over multiple routes.  While normal DSR only uses one
+`optimal' route, DSRPA can discover and use multiple nodes if the route request
+packet contains a \texttt{ALLROUTES} flag.
+
+It will then use non-optimal routes to distribute the load of the network like
+this:
 
 If $\#packets$ is the number of packets to be sent and
 $\#paths$ is the number of paths from the source to the
@@ -22,3 +56,9 @@ This ensures that most packets are delivered on the optimal route $i=0$, and
 the package count in a less optimal route is less than the count in a more
 optimal route. The number of packets send on a route $i$ is approximately
 twice as much as the number of packets send on the route $i+1$.
+
+The data dispersal requires more energy than would be needed without it. It
+does however minimise the difference in energy states. The decision of whether
+to use data dispersal or not must be made on a per-network basis: Networks
+enjoying high connectivity will consume more power with data dispersal than
+networks with low connectivity, because there will be a lot more broadcasting.
