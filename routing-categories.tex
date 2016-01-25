@@ -20,6 +20,12 @@ While the routes need to be discovered more often than in proactive algorithms,
 there is no traffic overhead due to the lack of special control messages, and
 as such, the reactive approach is considered to scale better.
 
+Two examples of reactive routing protocols are dynamic source routing (DSR)
+and ad-hoc on-demand distance vector routing (AODV). The difference between
+the two is that DSR, as a source routing protocol, records the entire route
+in the package during the route discovery phase; and does not store routing
+tables in the intermediate nodes, thus simplifying their design.
+
 \subsection{Geographical routing}
 The basic idea behind geographical routing is that nodes are addressed by
 their geographic location instead of an IP address. This has the advantage
