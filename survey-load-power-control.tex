@@ -3,3 +3,22 @@
 DSRPA\cite{djenouri2006new} defines a power-aware variation of dynamic source
 routing. It trades of battery freshness and power consumption by defining a
 metric on which it bases its routing.
+
+\todo[inline]{Define metric}
+
+It also uses disperses data over multiple routes.
+While normal DSR only uses the optimal route,
+DSRPA will also use non-optimal routes to distribute the load of the network. It
+does this similar to a process scheduler in UNIX.
+
+If $\#packets$ is the number of packets to be sent and
+$\#paths$ is the number of paths from the source to the
+destination, and the routes are ordered according to their optimality,
+with 0 being the best, then
+\[ \#packets_{i} := \left\lceil \frac{2^{\# paths - i - 1} \cdot \# packets}{2^{\#paths} - 1} \right\rceil \]
+is the number of packets to be sent on the route $i$.
+
+This ensures that most packets are delivered on the optimal route $i=0$, and
+the package count in a less optimal route is less than the count in a more
+optimal route. The number of packets send on a route $i$ is approximately
+twice as much as the number of packets send on the route $i+1$.
