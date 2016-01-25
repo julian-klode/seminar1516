@@ -15,28 +15,30 @@ rate is set to $25\%$, a packet will be sent after 25, 50, and 75 per cent of
 power consumed.
 
 The metric representing the optimality of a a route $C=I_{0}, \ldots, I_{n-1}$
-is defined as:
+is defined as (the minimum of):
 
-\[ Opt_{c} := \sum_{i=0}^{n-2} \frac{\alpha}{1-eng(I_{i})} + \frac{1-\alpha}{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}} \]
+\[ Opt_{c} := \sum_{i=0}^{n-2} \frac{\alpha}{\underbrace{1-eng(I_{i})}_{\text{residual energy rate}}} + \frac{1-\alpha}{\underbrace{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}}_{= 1 - \text{rate of total power}}} \]
 {}
 where
 \begin{itemize}
+    \item $\alpha$ is a weight
     \item $eng(I_{i}) \in [0,1]$ is the rate of energy consumed by $I_{i}$,
     \item $Pow(I_{i}, I_{i+1})$ is the power required for the link from $I_{i}$ to $I_{i+1}$, and
     \item $MaxPow(I_{i})$ is the maximum power of the node $I_{i}$, that is, the power that allows
           it to cover its power range.
 \end{itemize}
 
-Furthermore, the function (in time) $\alpha$ can be defined as:
+The more $\alpha$ increases, the more nodes with fresh batteries are preferred
+(and the more $\alpha$ decreases, the more min-power routes are preferred).
+
+We can define $\alpha$ as a function of time:
 \[ \alpha = \sqrt{(1-\alpha_{0})^{2} \cdot EngDiff + \alpha_{0}} \]
 where $EngDiff \in [0,1]$ is the difference between the maximum and minimum rate
 of energy consumed in the network and $\alpha_{0}$ some initial value.
 
-This has two effects: If the difference in battery energy states increases, the
-value of $\alpha$ increases. This counters the increasing difference between
-battery energy states, because the more $\alpha$ increases, the more nodes
-with fresh batteries are preferred (and the more $\alpha$ decreases, the more
-min-power nodes are preferred).
+This effectively counters the increasing difference $EngDiff$ because if that
+difference increases, $\alpha$ increases, and thus fresher nodes are preferred,
+and therefore, the value of $EngDiff$ decreases.
 
 DSRPA disperses data over multiple routes.  While normal DSR only uses one
 `optimal' route, DSRPA can discover and use multiple nodes if the route request
