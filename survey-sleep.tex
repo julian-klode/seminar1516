@@ -1,31 +1,9 @@
-\subsection{Sleep/power­ down mode}
-Algorithms in this category try to minimise the time a node is active, and
-maximise the time a node is at sleep. A common apprach to do this is to select
-one or more masters from a set of nodes which take over the routing functionality
-while the others can safely sleep. In such a scheme, nodes periodically wake up
-and elect a new master if the current one goes away.
-
-We will take a look at two master slaves protocols: SPAN, GAF;
-and at one protocol called PEN that has no concept of master and slave nodes.
-
-\subsubsection{SPAN}
 \begin{figure*}
 \centering
 \includegraphics[width=0.8\textwidth]{images/span-master-example}
 \caption{Master eligibility rule in the SPAN protocol. (from \cite{alotaibi2012survey})}
 \label{spanmaster}
 \end{figure*}
-In Span\cite{chen2002span}, a master is selected based on the following rule:
-A node becomes a master if two of its neighbors cannot reach each other directly
-or via one or two masters. For example, in figure~\ref{spanmaster}, nodes B and
-D become masters.
-
-In order to prevent or reduce overloading of masters, masters periodically
-check whether they should withdraw from being master; and non-master nodes
-periodically check if they should become master.
-
-
-\subsubsection{Geographic adaptive fidelity (GAF)}
 \begin{figure*}[!t]
 \subfloat[Grid example]{%
   \includegraphics[width=0.46\textwidth]{images/gaf-grids}
@@ -38,6 +16,30 @@ periodically check if they should become master.
 }
 \caption{Example grid and state diagram for GAF from \cite{alotaibi2012survey}}
 \end{figure*}
+\subsection{Sleep/power­ down mode}
+Algorithms in this category try to minimise the time a node is active, and
+maximise the time a node is at sleep. A common apprach to do this is to select
+one or more masters from a set of nodes which take over the routing functionality
+while the others can safely sleep. In such a scheme, nodes periodically wake up
+and elect a new master if the current one goes away.
+
+We will take a look at two master slaves protocols: SPAN, GAF;
+and at one protocol called PEN that has no concept of master and slave nodes.
+
+\subsubsection{SPAN}
+%SPAN-FIGURE
+In Span\cite{chen2002span}, a master is selected based on the following rule:
+A node becomes a master if two of its neighbors cannot reach each other directly
+or via one or two masters. For example, in figure~\ref{spanmaster}, nodes B and
+D become masters.
+
+In order to prevent or reduce overloading of masters, masters periodically
+check whether they should withdraw from being master; and non-master nodes
+periodically check if they should become master.
+
+
+\subsubsection{Geographic adaptive fidelity (GAF)}
+%GAF-FIGURE
 GAF\cite{xu2001geography} uses the geographical (GPS) location of a node in
 order to position them into a virtual grid.
 
