@@ -1,12 +1,12 @@
-\subsection{Sleep/power­ down mode}
+\subsection{Sleep/power­ down mode}\label{sleep}
 Algorithms in this category try to minimise the time a node is active, and
 maximise the time a node is at sleep. A common apprach to do this is to select
 one or more masters from a set of nodes which take over the routing functionality
 while the others can safely sleep. In such a scheme, nodes periodically wake up
 and elect a new master if the current one goes away.
 
-We will take a look at two master slaves protocols: SPAN, GAF;
-and at one protocol called PEN that has no concept of master and slave nodes.
+Two of the protocols discussed in this section, SPAN and GAF employ a master
+slave approach, whereas the PEN protocol has no such concept.
 
 \subsubsection{SPAN}\label{span}
 %SPAN-FIGURE
