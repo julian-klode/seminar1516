@@ -4,7 +4,11 @@ The unique challenges inherent in wireless ad-hoc networks led to a larger
 amount of categories, which are not always necessarily disjoint, meaning
 that an algorithm may belong to one or more categories.
 
-\subsubsection*{Basics: Proactive routing}
+\subsection{Basics: Proactive and reactive routing}
+Proactive and reactive routing algorithms are the basic dimensions of routing
+categories.
+
+\subsubsection*{Proactive routing}
 In proactive routing algorithms, each router builds its routing table by
 (regularly) exchanging messages with other routers in the network.
 
@@ -13,7 +17,7 @@ package is to be routed.
 A huge disadvantage of proactive routing protocols is the overhead imposed
 by the exchange of the update messages.
 
-\subsubsection*{Basics: Reactive routing}
+\subsubsection*{Reactive routing}
 In a reactive routing algorithm, routes are discovered when a packet arrives
 from a source and needs to be delivered to some destination.
 While the routes need to be discovered more often than in proactive algorithms,
@@ -25,6 +29,11 @@ and ad-hoc on-demand distance vector routing (AODV). The difference between
 the two is that DSR, as a source routing protocol, records the entire route
 in the package during the route discovery phase; and does not store routing
 tables in the intermediate nodes, thus simplifying their design.
+
+\subsection{Other categories}
+Distinguishing between proactive and reactive routing algorithms gives a very
+coarse categorisation. As such, several other categories have been identified
+over the years.
 
 \subsubsection*{Geographical routing}
 The basic idea behind geographical routing is that nodes are addressed by
@@ -66,10 +75,23 @@ see later on. Such an algorithm would of course also be power-aware.
 \subsubsection*{Power-aware}
 A power-aware routing algorithm tries to find a good trade off between
 power consumption of nodes and mobility. Yu, Lee, Youn~\cite{main1} describe two categories
-of power-aware protocols: those that try to minimise the active communication energy -- either
-by controlling the power used for transmission, or by load control -- and
-algorithms that try to minimise the inactivity energy, for example, by putting
-rarely used nodes to sleep.
+of power-aware protocols:
+
+First, there are those algorims that try to minimise the \textit{active communication energy}. Two
+subcategories can be identified:
+\begin{itemize}
+    \item Transmission power control -- controlling the power that is used for transmitting a packet
+    \item Load control/balancing -- algorithms that distribute the load over available nodes
+\end{itemize}
+There also exist hybrids of the two, for example, DSRPA (section~\ref{dsrpa})
+selects nodes with the freshest batteries and also controls the transmission
+power.
+
+Other algorithms do not try to minimise the active communication energy, but
+instead focus on minimising the  \textit{inactivity (idle) power consumption}. For example, unused
+nodes can be put to sleep or into lower power states. This subcategory often
+distinguishes between master and slave nodes -- for example, SPAN (section~\ref{span}), but there are also protocols
+where no such distinction is made -- for example, PEN (section~\ref{pen}).
 
 \subsubsection*{Hybrid}
 A hybrid protocol starts off as a proactive routing protocol but switches
@@ -78,11 +100,22 @@ overhead of proactive routing. In ad-hoc networks, it is implemented in
 hierarchical network architectures.
 
 \subsubsection*{Flow-oriented}
-As its name says, a flow-oriented routing looks at a flow of packets rather
-than individual packets. A flow usually being one end-to-end-connection.
+Alotaibi and Mukherjee~\cite{alotaibi2012survey} list flow-oriented or flow-aware
+routing as another category.
+Examples they list include
+IERP, which most likely refers to the The Interzone Routing Protocol for Ad Hoc Networks, an Internet Draft;
+and SrcRR, a wireless mesh network routing protocol. It is unclear what exactly
+makes these routing protocols flow-aware, and in absence of any definition of
+that term, it does not warrant any further discussion. 
 
 \subsubsection*{WMN}
 WMN routing algorithms are routing algorithms for wireless mesh networks.
+A wireless mesh network is a special type of (ad-hoc) networks in which all
+nodes participate in the distribution of data.
+
+Over the years, multiple routing algorithms for wireless mesh networks have
+been designed, examples include B.A.T.M.A.N. and the newer B.A.T.M.A.N. advanced
+which is used in the Freifunk community, for example.
 
 \subsubsection*{Multicast}
 Multicast routing algorithms are simply routing algorithms for multicast

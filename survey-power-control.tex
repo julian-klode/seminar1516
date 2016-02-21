@@ -1,6 +1,9 @@
 \subsection{Transmission power control}
+\label{power-control}
 Protocols in this category try to minimise the power required to transmit
-a message. This class of algorithm is akin to a graph optimisation problem,
+a message.
+
+This class of algorithm is akin to a graph optimisation problem,
 with the nodes in the MANET represented as nodes in a graph, the power required for
 transmitting over a link $p_{ij}$ represented as the cost of a vertex, and the goal
 to search the minimum-cost path between two nodes.
@@ -21,12 +24,6 @@ Calculating the optimal path at each step, after updating the residual energy
 and link costs.
 
 \subsubsection{Online max-min (OMM)}
-\begin{figure*}
-\centering
-\includegraphics[width=0.7\textwidth]{images/omm}
-\caption{Paths in OMM\cite{alotaibi2012survey}}
-\label{ommex}
-\end{figure*}
 \label{omm}
 OMM \cite{li2001online} maximises the network lifetime using two metrics:
 \begin{enumerate}
@@ -78,6 +75,13 @@ levels before the transmission whereas OMM uses the power levels after the
 transmission and can also switch to min-power paths.
 
 \subsubsection{Power aware localized routing (PLR)}
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/plr-example}
+\caption{Selection of next hop in PLR\cite{alotaibi2012survey}}
+\label{plrexample}
+\end{figure*}
+
 PLR\cite{stojmenovic2001power} is a geographical routing protocol, at least
 to a certain extend, that tries to minimise the overall power usage. Each node
 selects the next hop based on the power required for sending to this node, and
@@ -104,13 +108,6 @@ the power usage can be calculated as in (\ref{eq:plr:q}), where $n-1$ (\ref{eq:p
 So, given an example like Figure~\ref{plrexample} with a source node $A$, neighbours $N_{1}$, $N_{2}$, and $N_{3}$, and a
 destination $D$, $A$ should chose the next hop as the $N_{i}$ for which
 $p(|AN_{i}|) + q(|N_{i}D|)$ is minimal.
-
-\begin{figure*}
-\centering
-\includegraphics[width=0.7\textwidth]{images/plr-example}
-\caption{Selection of next hop in PLR\cite{alotaibi2012survey}}
-\label{plrexample}
-\end{figure*}
 
 \subsubsection{Minimum energy routing (MER)}
 MER\cite{doshi2002demand} modifies the dynamic-source-routing (DSR)\cite{johnson1996dynamic}
@@ -186,6 +183,15 @@ leading to a modified definition (\ref{eq:medsr:pmin2}) of $P_{min}$.
 In addition to the usual tables maintained by DSR, MEDSR also stores a power
 table at each node: For each node, the minimum power required to reach it.
 
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/compow-level-choice}
+\caption{Power choice in COMPOW: (a) too low, (b) too high, (c) optimal}
+\label{compow:power-choice}
+\end{figure*}
+
 \subsubsection{Retransmission-energy aware routing (RAR)}
 Transmissions may have link errors which require re-transmitting packets over
 a link. A path with many short links might be more efficient than a path with
@@ -211,14 +217,6 @@ It does so by maintaining a smallest common transmission power for all nodes,
 chosen so that all nodes can communicate with each other. If the power is too
 low, some nodes could not reach some others, if it is too high, there might be
 many redundant paths. See Figure~\ref{compow:power-choice}.
-
-
-\begin{figure*}
-\centering
-\includegraphics[width=0.7\textwidth]{images/compow-level-choice}
-\caption{Power choice in COMPOW: (a) too low, (b) too high, (c) optimal}
-\label{compow:power-choice}
-\end{figure*}
 
 COMPOW assumes a discrete set of power levels $P_{i}$ and maintains routing
 tables ${RT}_{P_{i}}$ containing all nodes reachable from the current one. The

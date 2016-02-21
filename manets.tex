@@ -34,6 +34,7 @@ Email:\href{mailto:klode@mathematik.uni-marburg.de}{klode@mathematik.uni-marburg
 Mobile Ad-Hoc networks, with battery-powered nodes, require energy efficient
 routing protocols in order to reduce the power consumption of nodes.
 
+Over the years, several categories of routing protocols have emerged.
 This term paper gives an overview of the different categories of energy
 efficient routing protocols, and samples for each category.
 \end{abstract}
@@ -48,13 +49,25 @@ efficient routing protocols, and samples for each category.
 
 \section{Categories of ad-hoc routing protocols}
 \input{routing-categories}
-
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/omm}
+\caption{Paths in OMM\cite{alotaibi2012survey}}
+\label{ommex}
+\end{figure*}
 \section{Survey of energy-efficient protocols}
 In the following, various routing protocols from each category (power control,
 load distribution, hybrids of them, and sleep/power-down) of energy
-efficient routing protocols are presented.
+efficient routing protocols are presented. An overview diagram can be found
+in Figure~\ref{fig:overview}.
 \input{survey-power-control}
 \input{survey-load-distribution}
+\begin{figure*}
+\centering
+\includegraphics[width=0.8\textwidth]{images/span-master-example}
+\caption{Master eligibility rule in the SPAN protocol\cite{alotaibi2012survey}}
+\label{spanmaster}
+\end{figure*}
 \input{survey-load-power-control}
 \input{survey-sleep}
 

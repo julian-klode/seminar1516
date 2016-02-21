@@ -3,7 +3,7 @@ Their nodes are battery-powered and non-stationary, requiring flexible network a
 One example for ad-hoc networks, albeit not particularly mobile, are wireless sensor networks.
 
 Routing protocols in such networks need to consider several important key
-factors:
+factors, such as:
 \begin{enumerate}
    \item Scalability -- A protocol should scale to a large number of nodes
    \item Fault tolerance -- A protocol should continue working if some nodes fail
@@ -18,6 +18,9 @@ and reactive (that is, on demand) routing protocols:
   Geographical, Geo-cast, Multi-Path, Hierarchical, Power-aware, Flow-Oriented,
   Hybrid, WMN, and Multicast.
 
-Most of these categories are not focused on energy efficiency, but more on
-other factors such as fault tolerance, scalability and performance. The only
-category in which energy efficiency is discussed is that of power-aware algorithms.
+That survey does not focus on energy-efficient networks, but intends to give
+a broader overview. It unfortunately only discusses energy efficiency in the
+context of power aware routing, although there a various routing protocols
+focusing on energy-efficiency that are also part of the other categories.
+For example, in section~\ref{gaf}, a routing protocol is discussed which
+uses geographic features to reduce power consumption.
