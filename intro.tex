@@ -1,27 +1,32 @@
-Mobile ad-hoc networks present a number of unique challenges for routing protocols.
-Their nodes are battery-powered and non-stationary, requiring flexible network architecture.
+Initial work on ad-hoc networks focused on mobile sensor networks. With the
+mass arrival of mobile wireless devices like smartphones, mobile ad hoc networks
+are more important than ever, and the small batteries often those devices ship
+with require an energy efficient network, and thus, energy-efficient routing
+protocols.
 
-One example for ad-hoc networks, albeit not particularly mobile, are wireless sensor networks.
-
-Routing protocols in such networks need to consider several important key
+Apart from energy efficiency, routing algorithms should also consider other
 factors, such as:
 \begin{enumerate}
    \item Scalability -- A protocol should scale to a large number of nodes
    \item Fault tolerance -- A protocol should continue working if some nodes fail
-   \item Energy efficiency -- A protocol should not consume more energy than needed,
-   either on an individual node, or aggregated.
 \end{enumerate}
 
-A recent survey\cite{alotaibi2012survey} on routing protocols for wireless
-ad hoc networks describes six categories of routing protocols for wireless
-ad-hoc networks,  in addition to the classic categories of proactive (that is, table driven)
-and reactive (that is, on demand) routing protocols:
+Section~\ref{categories} explains various categories of routing protocols for
+wireless ad hoc networks, as identified by Alotaibi and Mukherjee\cite{alotaibi2012survey}. Those
+routing categories include the classic reactive and proactive routing categories,
+as well as
   Geographical, Geo-cast, Multi-Path, Hierarchical, Power-aware, Flow-Oriented,
-  Hybrid, WMN, and Multicast.
+  Hybrid, WMN, and Multicast routing algorithms. 
 
-That survey does not focus on energy-efficient networks, but intends to give
-a broader overview. It unfortunately only discusses energy efficiency in the
+
+Alotaibi and Mukherjee\cite{alotaibi2012survey} do not focus on energy-efficient networks, but intend to give
+a broader overview. Thus, they unfortunately only discuss energy efficiency in the
 context of power aware routing, although there a various routing protocols
 focusing on energy-efficiency that are also part of the other categories.
 For example, in section~\ref{gaf}, a routing protocol is discussed which
 uses geographic features to reduce power consumption.
+
+Section~\ref{survey} explains the various categories of energy-efficient
+routing in further detail, and gives a survey of the energy efficient protocols
+listed in Figure~\ref{fig:overview}.
+
