@@ -228,3 +228,49 @@ exchanging the routing tables between nodes.
 The PARO Protocol\cite{gomez2003paro} introduces intermediate nodes into a
 route, increasing the length of the route, in order to reduce the transmission
 power required by each node.
+
+In the PARO model, all successfully received packets are acknowledged on the
+link layer, and nodes must be able to overhear transmissions of other nodes
+above a certain minimum signal-to-noise-ratio (SNR) value. They must also
+be able to determine the SNR value of a received packet. It is also assumed
+that the power required for a transmission from $A$ to $B$ is about the same
+as from $B$ to $A$, as such interference conditions must be similar in both
+directions, requiring the use of appropriate interference-free media access
+control (MAC) such as found in 802.11.
+
+In PARO, a node keeps it transmitter on for sending a packet for $L/C$ seconds,
+where $L$ is the number of bits to be transmitted and $C$ is the speed of the
+channel in bits per second.
+It also keeps it transmitter on for sending acknowledgements of size $l$.
+
+Given a route $k$, the power needed to transmit a packet over that
+route can thus be defined as in (\ref{eq:paro:P}).
+\begin{align}\label{eq:paro:P}
+  P_{k} := \sum_{i=0}^{N_{k}} T_{i,i+1} \cdot L + T_{i+1,i} l
+\end{align}
+The factor $T_{i,j}$ in (\ref{eq:paro:P}) defines the minimum transmission power
+to be used at $i$ so that the packet can still be received by $j$, and $N_{k}$
+is the number of times the packet is forwarded along the route.
+
+This equation only considers transmission power and not the power required for
+listening or processing data, no attempt is made to minimise those.
+
+Let $R_{k}$ be the power required for discovering a route $k$ for which $P_{k}$
+is the minimum. Then, transmitting $Q$ packets along the best route $k$ can be
+defined as in (\ref{eq:paro:c}).
+\begin{align}\label{eq:paro:c}
+  C_{k} := R_{k} + Q P_{k}
+\end{align}
+
+
+Packets in PARO store the transmission power and other nodes overhearing the
+packets use that information together with the received power to estimate the
+power required to transmit to that node.
+
+PARO discovers routes on-demand instead of creating them in advance. This means
+that the first packet from a source to a destination will be sent directly. Nodes
+overhearing the transmission can elect to become a redirector, by sending a
+\textit{route-redirect} message to the source and destination nodes. This can
+happen with every further packet, and thus new redirectors can be added with
+each packet, eventually converging towards a final route achieving the minimal
+transmission power as defined in (\ref{eq:paro:P}).
