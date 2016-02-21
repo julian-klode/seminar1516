@@ -1,15 +1,3 @@
-\begin{figure*}[!t]
-\subfloat[Grid example]{%
-  \includegraphics[width=0.46\textwidth]{images/gaf-grids}
-  \label{gafgrids}
-}
-\hfill
-\subfloat[Node states]{%
-\includegraphics[width=0.46\textwidth]{images/gaf-states}
-\label{gafstates}
-}
-\caption{Example grid and state diagram for GAF from \cite{alotaibi2012survey}}
-\end{figure*}
 \subsection{Sleep/power­ down mode}
 Algorithms in this category try to minimise the time a node is active, and
 maximise the time a node is at sleep. A common apprach to do this is to select
@@ -34,7 +22,18 @@ periodically check if they should become master.
 
 \subsubsection{Geographic adaptive fidelity (GAF)}
 \label{gaf}
-%GAF-FIGURE
+\begin{figure*}[!t]
+\subfloat[Grid example]{%
+  \includegraphics[width=0.46\textwidth]{images/gaf-grids}
+  \label{gafgrids}
+}
+\hfill
+\subfloat[Node states]{%
+\includegraphics[width=0.46\textwidth]{images/gaf-states}
+\label{gafstates}
+}
+\caption{Example grid and state diagram for GAF from \cite{alotaibi2012survey}}
+\end{figure*}
 GAF\cite{xu2001geography} uses the geographical (GPS) location of a node in
 order to position them into a virtual grid.
 
