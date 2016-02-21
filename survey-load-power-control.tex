@@ -15,11 +15,7 @@ rate is set to $25\%$, a packet will be sent after 25, 50, and 75 per cent of
 power consumed.
 
 The metric representing the optimality of a a route $C=I_{0}, \ldots, I_{n-1}$
-is defined as (the minimum of):
-
-\[ Opt_{c} := \sum_{i=0}^{n-2} \frac{\alpha}{\underbrace{1-eng(I_{i})}_{\text{residual energy rate}}} + \frac{1-\alpha}{\underbrace{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}}_{= 1 - \text{rate of total power}}} \]
-{}
-where
+is defined as the minimum of $Opt_{c}$ (\ref{eq:dsrpa:opt-c}), where
 \begin{itemize}
     \item $\alpha$ is a weight
     \item $eng(I_{i}) \in [0,1]$ is the rate of energy consumed by $I_{i}$,
@@ -28,13 +24,22 @@ where
           it to cover its power range.
 \end{itemize}
 
+\begin{align}
+Opt_{c} &:= \sum_{i=0}^{n-2} \frac{\alpha}{\underbrace{1-eng(I_{i})}_{\text{residual energy rate}}} + \frac{1-\alpha}{\underbrace{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}}_{= 1 - \text{rate of total power}}}
+\label{eq:dsrpa:opt-c}
+\end{align} 
+
+
 The more $\alpha$ increases, the more nodes with fresh batteries are preferred
 (and the more $\alpha$ decreases, the more min-power routes are preferred).
 
-We can define $\alpha$ as a function of time:
-\[ \alpha = \sqrt{(1-\alpha_{0})^{2} \cdot EngDiff + \alpha_{0}} \]
+We can define $\alpha$ as a function of time (\ref{eq:dsrpa:alpha}),
 where $EngDiff \in [0,1]$ is the difference between the maximum and minimum rate
 of energy consumed in the network and $\alpha_{0}$ some initial value.
+\begin{align}
+    \alpha &:= \sqrt{(1-\alpha_{0})^{2} \cdot EngDiff + \alpha_{0}}
+    \label{eq:dsrpa:alpha}
+\end{align}
 
 This effectively counters the increasing difference $EngDiff$ because if that
 difference increases, $\alpha$ increases, and thus fresher nodes are preferred,
@@ -50,9 +55,12 @@ this:
 If $\#packets$ is the number of packets to be sent and
 $\#paths$ is the number of paths from the source to the
 destination, and the routes are ordered according to their optimality,
-with 0 being the best, then
-\[ \#packets_{i} := \left\lceil \frac{2^{\# paths - i - 1} \cdot \# packets}{2^{\#paths} - 1} \right\rceil \]
-is the number of packets to be sent on the route $i$.
+with 0 being the best, then the number of packets to be sent on the route $i$
+is given by (\ref{eq:dsrpa:packets}).
+\begin{align}
+     \#packets_{i} &:= \left\lceil \frac{2^{\# paths - i - 1} \cdot \# packets}{2^{\#paths} - 1} \right\rceil
+     \label{eq:dsrpa:packets}
+\end{align}
 
 This ensures that most packets are delivered on the optimal route $i=0$, and
 the package count in a less optimal route is less than the count in a more

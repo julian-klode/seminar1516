@@ -87,18 +87,19 @@ For this, it has to know the locations of the next hops and the location of
 the destinations. Based on the locations and the distance between the locations,
 it can then estimate the power usage.
 
-For direct connections, this is:
-\( p(d) := ad^{\alpha} + c \)
-for some constants $a$ and $c$ and some $\alpha > 2$ (that is, power usage
+For direct connections, this is given in (\ref{eq:plr:p}),
+for some constants $a$ and $c$ and some $\alpha \ge 2$ (that is, power usage
 is at least growing quadratic in relation to the distance).
+\begin{align}\label{eq:plr:p} p(d) := ad^{\alpha} + c \end{align}
 
 For indirect communication between the next hop and the final destination,
-the power usage can be calculated as:
-\begin{align*}
+the power usage can be calculated as in (\ref{eq:plr:q}), where $n-1$ (\ref{eq:plr:n}) is the optimal number of intermediate nodes\cite{stojmenovic2001power}.
+\begin{align}
+  \label{eq:plr:q}
    q(d) &:= cn + da \left(\sfrac{a(\alpha - 1)}{c}\right)^{\sfrac{(1-\alpha)}{\alpha}}, \\
+   \label{eq:plr:n}
       n &:= d\left(\sfrac{(a(\alpha - 1))}{c}\right)^{\sfrac{1}{\alpha}};
-\end{align*}
-where $n-1$ is the optimal number of intermediate nodes\cite{stojmenovic2001power}.
+\end{align}
 
 So, given an example like Figure~\ref{plrexample} with a source node $A$, neighbours $N_{1}$, $N_{2}$, and $N_{3}$, and a
 destination $D$, $A$ should chose the next hop as the $N_{i}$ for which
@@ -167,12 +168,20 @@ in the packets, rather than one power-level per link. That power level is stored
 in amended route request and route reply packets.
 
 When a node $C$ receives a route reply from a node $D$, it can estimate the
-power level required for transmitting to $D$ by calculating:
-\[ P_{min} = P_{tx} - P_{recv} + P_{th} \]
-where $P_{tx}$ is the transmit power of $D$, $P_{recv}$ the receive power of $C$,
+power level required for transmitting to $D$ by calculating the minimum power
+level as in (\ref{eq:medsr:pmin}), where $P_{tx}$ is the transmit power of $D$, $P_{recv}$ the receive power of $C$,
 and $P_{th}$ is the threshold power for a successful receive. In 802.11, that's
-usually $3.652 \cdot 10^{-10}$ watt. In order to avoid instability of the link, a margin is added
-\[ P_{min} = P_{tx} - P_{recv} + P_{th} + P_{margin}\].{}
+usually $3.652 \cdot 10^{-10}$ watt.
+\begin{align}
+  \label{eq:medsr:pmin}
+   P_{min} &:= P_{tx} - P_{recv} + P_{th} 
+\end{align}
+In order to avoid instability of the link, a margin is added,
+leading to a modified definition (\ref{eq:medsr:pmin2}) of $P_{min}$.
+\begin{align}
+  \label{eq:medsr:pmin2}
+   P_{min} &:= P_{tx} - P_{recv} + P_{th} + P_{margin}
+\end{align}
 
 In addition to the usual tables maintained by DSR, MEDSR also stores a power
 table at each node: For each node, the minimum power required to reach it.
@@ -183,9 +192,12 @@ a link. A path with many short links might be more efficient than a path with
 few long distance links in the absence of link errors, but with link errors,
 things might look different, because some packets need to be re-transmitted.
 
-RAR\cite{banerjee2002minimum} modifies the cost/power requirement of a link $p_{i,i+1}$ by including the error rate of that
-link $e_{i,i+1}$. That modified link cost $P_{i,i+1}$ is defined as
-\[ P_{i,i+1} = \underbrace{p_{i,i+1}}_{\text{original link cost}} \cdot \underbrace{\sfrac{1}{\overbrace{(1-e_{i,i+1})}^{\text{success rate}}}}_{\text{expected number of tries}}. \]
+RAR\cite{banerjee2002minimum} introduces a modified cost/power requirement
+$P_{i,i+1}$ (\ref{eq:rar:linkcost}) of a link $p_{i,i+1}$ by including the error
+rate of that link $e_{i,i+1}$ .
+\begin{align}\label{eq:rar:linkcost}
+  P_{i,i+1} = \underbrace{p_{i,i+1}}_{\text{original link cost}} \cdot \underbrace{\sfrac{1}{\overbrace{(1-e_{i,i+1})}^{\text{success rate}}}}_{\text{expected number of tries}}
+\end{align} 
 
 \subsubsection{Smallest common power (COMPOW)}
 Network protocols often require handshaking of some sorts, like acknowledgements
