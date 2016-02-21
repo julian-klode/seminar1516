@@ -2,8 +2,9 @@
 
 \subsubsection{Dynamic Source Routing Power-Aware (DSRPA)}
 \label{dsrpa}
-DSRPA\cite{djenouri2006new} defines a power-aware variation of dynamic source
-routing. It trades of battery freshness and power consumption by defining a
+Dynamic Source Routing Power-Aware (DSRPA)\cite{djenouri2006new} defines a
+power-aware variation of dynamic source routing.
+ It trades of battery freshness and power consumption by defining a
 metric on which it bases its routing.
 
 Power consumption is reduced by recording the transmission power in route
@@ -43,7 +44,7 @@ of energy consumed in the network and $\alpha_{0}$ some initial value.
     \label{eq:dsrpa:alpha}
 \end{align}
 
-This effectively counters the increasing difference $EngDiff$ because if that
+This counters the increasing difference $EngDiff$ because if that
 difference increases, $\alpha$ increases, and thus fresher nodes are preferred,
 and therefore, the value of $EngDiff$ decreases.
 
