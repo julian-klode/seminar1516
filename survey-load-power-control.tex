@@ -3,15 +3,15 @@
 \subsubsection{Dynamic Source Routing Power-Aware (DSRPA)}
 \label{dsrpa}
 Dynamic Source Routing Power-Aware (DSRPA)\cite{djenouri2006new} defines a
-power-aware variation of dynamic source routing.
+power-aware variant of dynamic source routing.
  It trades of battery freshness and power consumption by defining a
 metric on which it bases its routing.
 
 Power consumption is reduced by recording the transmission power in route
 request messages and then using that value and the reception power to calculate
-the required power at the receiver side.
+the required power for transmitting a packet to the sender at the receiver side.
 
-Nodes can share their power state by broadcasting in its neighbourhood a special
+A node can share its power state by broadcasting in its neighbourhood a special
 $E_{state}$ packet that contains the current power value. This packet is send
 each time a certain percentage of power has been consumed. For example, if the
 rate is set to $25\%$, a packet will be sent after 25, 50, and 75 per cent of

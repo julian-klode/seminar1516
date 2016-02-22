@@ -1,8 +1,8 @@
 \subsection{Sleep/power­ down mode}\label{sleep}
 Algorithms in this category try to minimise the time a node is active, and
-maximise the time a node is at sleep. A common apprach to do this is to select
+maximise the time a node is asleep. A common approach to do this is to select
 one or more masters from a set of nodes which take over the routing functionality
-while the others can safely sleep. In such a scheme, nodes periodically wake up
+while the others can sleep safely. In such a scheme, nodes periodically wake up
 and elect a new master if the current one goes away.
 
 Two of the protocols discussed in this section, SPAN and GAF employ a master
@@ -10,12 +10,12 @@ slave approach, whereas the PEN protocol has no such concept.
 
 \subsubsection{SPAN}\label{span}
 %SPAN-FIGURE
-In Span\cite{chen2002span}, a master is selected based on the following rule:
+In SPAN\cite{chen2002span}, a master is selected based on the following rule:
 A node becomes a master if two of its neighbors cannot reach each other directly
 or via one or two masters. For example, in Figure~\ref{spanmaster}, nodes B and
 D become masters.
 
-In order to prevent or reduce overloading of masters, masters periodically
+In order to prevent or at least reduce overloading of masters, masters periodically
 check whether they should withdraw from being master; and non-master nodes
 periodically check if they should become master.
 
@@ -61,6 +61,6 @@ A sending node waits until it receives a broadcast message from the intended
 destination, then sends a communication request to the destination during
 the destinations listening period. Finally, it starts the communication.
 
-This scheme easily avoids the cost of selecting a master and of overloaded
-masters. It is only effective for networks without much traffic, as the delay
+This scheme easily avoids the cost of selecting a master and avoids overloading
+master nodes. It is only effective for networks without much traffic, as the delay
 can be quite high because senders need to wait for receivers to wake up.

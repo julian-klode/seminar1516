@@ -14,7 +14,7 @@ path in a (static) network that minimises the sum of link costs in the network,
 where the link cost between $i$ and $j$ is defined as \( e_{ij}^{x_{i}}E_{i}^{x_{2}}R_{i}^{-x_{3}}\);
 \(e_{ij}\) is the energy cost for the transmission, $E_{i}$ is the initial energy
 of the node $i$ and $R_{i}$ is the residue energy of the node. \(x_{1}, x_{2}, x_{3}\)
-are weighting factors. As an example, if $x_{1}=x_{2}=x_{3}=0$, then the cost
+are weighting factors. For example, if $x_{1}=x_{2}=x_{3}=0$, then the cost
 of each link is 1, and the optimal path is the shortest distance path.
 
 In a static wireless network, $E_{i}$ and $e_{ij}$ are constant, but $R_{i}$
@@ -28,14 +28,14 @@ and link costs.
 OMM \cite{li2001online} maximises the network lifetime using two metrics:
 \begin{enumerate}
   \item \textbf{min-power} - Minimising the overall power
-  \item \textbf{max-min} - Maximising the minimum residual power
+  \item \textbf{max-min} - Maximising the minimum residual power after a transfer
 \end{enumerate}
 
 First OMM calculates the \textit{min-power} path using Dijkstra’s algorithm. Let
 the power required by that be $P_{min}$.
 Then it determines the \textit{max-min} paths by looking at all paths whose
-power do not deviate much from the min-power path, that is, less than $zP_{\min}$
-for some $z \ge 1$. It calculates the minimum residual power of all nodes
+power do not deviate much from the min-power path, that is, who consume less
+power than $zP_{\min}$ for some $z \ge 1$. It calculates the minimum residual power of all nodes
 after the transmission would have taken place, and chooses the path where
 that value is largest.
 
@@ -107,13 +107,13 @@ the power usage can be calculated as in (\ref{eq:plr:q}), where $n-1$ (\ref{eq:p
 
 So, given an example like Figure~\ref{plrexample} with a source node $A$, neighbours $N_{1}$, $N_{2}$, and $N_{3}$, and a
 destination $D$, $A$ should chose the next hop as the $N_{i}$ for which
-$p(|AN_{i}|) + q(|N_{i}D|)$ is minimal.
+$p(\abs{AN_{i}}) + q(\abs{N_{i}D})$ is minimal.
 
 \subsubsection{Minimum energy routing (MER)}
 MER\cite{doshi2002demand} modifies the dynamic-source-routing (DSR)\cite{johnson1996dynamic}
 and 802.11 MAC algorithms\cite{woesner1998power} with 8 options (table~\ref{tbl:mer-options}) in order to
-(1) obtain power information, (2) measure overhead of energy-awareness, and
-(3) maintain the minimum power route with mobile nodes.
+(a) obtain power information, (b) measure overhead of energy-awareness, and
+(c) maintain the minimum power route with mobile nodes.
 
 \begin{table}[tb]
   \begin{tabular}{ll}
@@ -138,16 +138,16 @@ of the receiver to calculate the minimum power required for transmissions
 from that sender to it. The value is appended at each intermediate node, and the
 destination node then includes it in its \textit{route-reply} header.
 
-The source node than includes this information when it's sending a packet, and
+The source node then includes this information when it sends a packet, and
 all nodes transmit that package with the controlled power level.
 
-Option F does the same for the MAC layer's ACK packets.
+Option F does the same for the ACK packets of the MAC layer.
 
 Option $B$ is related to the route cache of the DSR protocol ($C$ and $D$ as well). It
 uses the information obtained by option $A$ to select the route that requires
 the minimum energy amongst its cached routes.
 
-Option $G$ takes care of adjusting routes when the power transmittion requirements
+Option $G$ takes care of adjusting routes when the power transmission requirements
 change because nodes moved.
 
 Option $E$ and $H$ allow nodes not participating in the routing to recommend
@@ -181,7 +181,7 @@ leading to a modified definition (\ref{eq:medsr:pmin2}) of $P_{min}$.
 \end{align}
 
 In addition to the usual tables maintained by DSR, MEDSR also stores a power
-table at each node: For each node, the minimum power required to reach it.
+table at each node: That is, for each node, it stores the minimum power required to reach it.
 
 
 
@@ -195,7 +195,7 @@ table at each node: For each node, the minimum power required to reach it.
 \subsubsection{Retransmission-energy aware routing (RAR)}
 Transmissions may have link errors which require re-transmitting packets over
 a link. A path with many short links might be more efficient than a path with
-few long distance links in the absence of link errors, but with link errors,
+few long distance links in the absence of link errors; but with link errors,
 things might look different, because some packets need to be re-transmitted.
 
 RAR\cite{banerjee2002minimum} introduces a modified cost/power requirement
@@ -211,7 +211,7 @@ sent to a sender for his packages. Thus, for a MANET to be reliable for those
 protocols, for every two nodes, there must be routes in both directions, that
 is, some form of bi-directionality.
 
-The smallest common power\cite{narayanaswamy2002power} achieves bi-directionality
+The smallest common power protocol\cite{narayanaswamy2002power} achieves bi-directionality
 of communication in the network.
 It does so by maintaining a smallest common transmission power for all nodes,
 chosen so that all nodes can communicate with each other. If the power is too
@@ -221,7 +221,7 @@ many redundant paths. See Figure~\ref{compow:power-choice}.
 COMPOW assumes a discrete set of power levels $P_{i}$ and maintains routing
 tables ${RT}_{P_{i}}$ containing all nodes reachable from the current one. The
 optimal power level $P_{i}$ can be determined as the smallest one for which
-$\mid RT_{P_{i}} \mid$ is equal to the number of nodes in the network, by
+$\abs{RT_{P_{i}}}$ is equal to the number of nodes in the network, by
 exchanging the routing tables between nodes.
 
 \subsubsection{PARO}
@@ -246,7 +246,7 @@ It also keeps it transmitter on for sending acknowledgements of size $l$.
 Given a route $k$, the power needed to transmit a packet over that
 route can thus be defined as in (\ref{eq:paro:P}).
 \begin{align}\label{eq:paro:P}
-  P_{k} := \sum_{i=0}^{N_{k}} T_{i,i+1} \cdot L + T_{i+1,i} l
+  P_{k} := \sum_{i=0}^{N_{k}} \frac{T_{i,i+1} \cdot L + T_{i+1,i} l}{C}
 \end{align}
 The factor $T_{i,j}$ in (\ref{eq:paro:P}) defines the minimum transmission power
 to be used at $i$ so that the packet can still be received by $j$, and $N_{k}$
@@ -256,7 +256,7 @@ This equation only considers transmission power and not the power required for
 listening or processing data, no attempt is made to minimise those.
 
 Let $R_{k}$ be the power required for discovering a route $k$ for which $P_{k}$
-is the minimum. Then, transmitting $Q$ packets along the best route $k$ can be
+is the minimum (the `best' route). Then, transmitting $Q$ packets along the best route $k$ can be
 defined as in (\ref{eq:paro:c}).
 \begin{align}\label{eq:paro:c}
   C_{k} := R_{k} + Q P_{k}

@@ -43,8 +43,9 @@ node needs to know its location and each source needs to know the location
 of the receiver.
 
 In section~\ref{gaf} takes a look at the Geographic adaptive fidelity (GAF)
-protocol, which utilises geographical features for routing, although with an
-interesting twist.
+protocol, which utilises geographical features for routing, but is not strictly
+a geographical routing protocol in the sense of this definition, as it only
+uses the geographic information for grouping nodes into clusters.
 
 \subsubsection*{Geo-cast}
 Geo-cast routing merges multi-cast routing with geographical routing, to
@@ -52,7 +53,7 @@ deliver messages to a group of nodes identified by their locations.
 
 \subsubsection*{Hierarchical}
 A hierarchical routing algorithm defines multiple zones or clusters with
-gateways that connect them with each other. Inside a cluster, there often
+gateways connecting the clusters with each other. Inside a cluster, there often
 are one or more cluster heads, that are responsible for maintaining the
 connectivity within the cluster. Non-head nodes can only communicate with
 their cluster heads, whereas gateway nodes can exchange information with
@@ -70,7 +71,7 @@ parts of data).
 Energy-efficiency is not a paramount concern of most multi-path routing, the
 load balancing idea can however not only be applied to performance, but also
 to power levels, to distribute the power used within the network, as can be seen
-in section\ref{load-distribution}. Such an algorithm would of course also be power-aware.
+in section~\ref{load-distribution}. Such an algorithm would of course also be power-aware.
 
 \subsubsection*{Power-aware}
 A power-aware routing algorithm tries to find a good trade off between
@@ -90,7 +91,7 @@ power.
 Other algorithms do not try to minimise the active communication energy, but
 instead focus on minimising the  \textit{inactivity (idle) power consumption}. For example, unused
 nodes can be put to sleep or into lower power states. This subcategory often
-distinguishes between master and slave nodes -- for example, SPAN (section~\ref{span}), but there are also protocols
+distinguishes between master and slave nodes -- for example, SPAN (section~\ref{span}); but there are also protocols
 where no such distinction is made -- for example, PEN (section~\ref{pen}).
 
 \subsubsection*{Hybrid}
@@ -111,11 +112,11 @@ that term, it does not warrant any further discussion.
 
 \subsubsection*{WMN}
 WMN routing algorithms are routing algorithms for wireless mesh networks.
-A wireless mesh network is a special type of (ad-hoc) networks in which all
+A wireless mesh network is a special type of (ad-hoc) network in which all
 nodes participate in the distribution of data.
 
 Over the years, multiple routing algorithms for wireless mesh networks have
-been designed, examples include B.A.T.M.A.N. and the newer B.A.T.M.A.N. advanced
+been designed, examples include `B.A.T.M.A.N.' and the newer `B.A.T.M.A.N. advanced'
 which is used in the Freifunk community, for example\cite{batman-adv}.
 % OUT OF PLACE
 \begin{figure*}
@@ -128,5 +129,5 @@ which is used in the Freifunk community, for example\cite{batman-adv}.
 Multicast routing algorithms are simply routing algorithms for multicast
 groups.
 One example for a multicast routing algorithm is multicast ad-hoc on-demand
-distance vector (MAODV)\cite{manet-maodv-00}, which is currently a work
-in progress internet-draft.
+distance vector (MAODV)\cite{manet-maodv-00}, which is currently a
+work-in-progress internet-draft.
