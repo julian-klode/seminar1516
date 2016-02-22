@@ -1,6 +1,56 @@
 
 \subsection{Combining Power control and Load balancing}
 
+\subsubsection{Online max-min (OMM)}
+% OUT OF PLACE
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/omm}
+\caption{Paths in OMM\cite{alotaibi2012survey}}
+\label{ommex}
+\end{figure*}
+\label{omm}
+OMM \cite{li2001online} maximises the network lifetime using two metrics:
+\begin{enumerate}
+  \item \textbf{min-power} - Minimising the overall power
+  \item \textbf{max-min} - Maximising the minimum residual power after a transmission
+\end{enumerate}
+
+First OMM calculates the \textit{min-power} path using Dijkstra’s algorithm. Let
+the power required by that be $P_{min}$.
+Then it determines the \textit{max-min} paths by looking at all paths whose
+power do not deviate much from the min-power path, that is, who consume less
+power than $zP_{\min}$ for some $z \ge 1$. It calculates the minimum residual power of all nodes
+after the transmission would have taken place, and chooses the path where
+that value is largest.
+
+For example, in Figure~\ref{ommex}, the min-power path from
+$S$ to $D$ is $S \to B \to D$ with a value of 18 ($S \to A \to D$ has 20,
+$S \to C \to D$ has 30).
+It's minimum residual energy will be $2$, as node $B$ needs
+$8$ out of the $10$ power units it has.
+
+Looking at the alternate paths, $S \to C \to D$ will have a
+minimum residual energy of $30-20=10$ in node $C$, and $S \to A \to D$ will
+have a minimum residual energy of $25-10$ in node $A$.
+Thus, the max-min path is $S \to A \to D$.
+
+Choosing a good value for $z$ in $zP_{\min}$ is important: For $z=1$, only
+the min-power path is considered; for $z \to \inf$, all paths can be
+considered. The algorithm starts with a \textit{random} value for $z$, and
+then measures the residual energy (\textit{lifetime}) of of the most overloaded node during some
+fixed time period. Afterwards, the value of $z$ is increased by a small constant
+and the lifetime is measured again. If the lifetime increases, the value of $z$
+is increased, otherwise, it is decreased. Because the lifetime is measured
+in two distinct time periods, it is assumed that load distribution is roughly
+similar, otherwise the results might not be really useful.
+%OOP: SPAN-FIGURE
+\begin{figure*}
+\centering
+\includegraphics[width=0.8\textwidth]{images/span-master-example}
+\caption{Master eligibility rule in the SPAN protocol\cite{alotaibi2012survey}}
+\label{spanmaster}
+\end{figure*}
 \subsubsection{Dynamic Source Routing Power-Aware (DSRPA)}
 \label{dsrpa}
 Dynamic Source Routing Power-Aware (DSRPA)\cite{djenouri2006new} defines a
