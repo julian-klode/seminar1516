@@ -356,21 +356,19 @@
 
 \begin{frame}{Prototype embedded network (PEN)\cite{girling2000design}}
 
-
-    \begin{block}{Receiving}
-        
-    Periodically wake up and
-    \begin{enumerate}
-        \item Advertise presence
-        \item Listen for communication requests
-        \item Process communication requests
-    \end{enumerate}
-    \end{block}
     \begin{block}{Transmitting}
     \begin{enumerate}
         \item Wait for broadcast from intended destination
         \item Send communication request
         \item Send data
+    \end{enumerate}
+    \end{block}
+    \begin{block}{Receiving}
+    Periodically wake up and
+    \begin{enumerate}
+        \item Advertise presence
+        \item Listen for communication requests
+        \item Process communication requests
     \end{enumerate}
     \end{block}
 $\rightarrow$ No masters or slaves!
