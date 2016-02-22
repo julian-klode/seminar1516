@@ -19,7 +19,12 @@ rate is set to $25\%$, a packet will be sent after 25, 50, and 75 per cent of
 power consumed.
 
 The metric representing the optimality of a a route $C=I_{0}, \ldots, I_{n-1}$
-is defined as the minimum of $Opt_{c}$ (\ref{eq:dsrpa:opt-c}), where
+is defined as the minimum of $Opt_{c}$ (\ref{eq:dsrpa:opt-c}).
+\begin{align}
+Opt_{c} &:= \sum_{i=0}^{n-2} \frac{\alpha}{\underbrace{1-eng(I_{i})}_{\text{residual energy rate}}} + \frac{1-\alpha}{\underbrace{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}}_{= 1 - \text{rate of total power}}}
+\label{eq:dsrpa:opt-c}
+\end{align} 
+The factors in  (\ref{eq:dsrpa:opt-c}) have the following meanings:
 \begin{itemize}
     \item $\alpha$ is a weight
     \item $eng(I_{i}) \in [0,1]$ is the rate of energy consumed by $I_{i}$,
@@ -28,18 +33,13 @@ is defined as the minimum of $Opt_{c}$ (\ref{eq:dsrpa:opt-c}), where
           it to cover its power range.
 \end{itemize}
 
-\begin{align}
-Opt_{c} &:= \sum_{i=0}^{n-2} \frac{\alpha}{\underbrace{1-eng(I_{i})}_{\text{residual energy rate}}} + \frac{1-\alpha}{\underbrace{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}}_{= 1 - \text{rate of total power}}}
-\label{eq:dsrpa:opt-c}
-\end{align} 
-
 
 The more $\alpha$ increases, the more nodes with fresh batteries are preferred
 (and the more $\alpha$ decreases, the more min-power routes are preferred).
 
 $\alpha$ can be defined as a function of time (\ref{eq:dsrpa:alpha}),
-where $EngDiff \in [0,1]$ is the difference between the maximum and minimum rate
-of energy consumed in the network and $\alpha_{0}$ some initial value.
+for some $EngDiff \in [0,1]$ accounting for the difference between the maximum and minimum rate
+of energy consumed in the network and some $\alpha_{0}$ as the initial value.
 \begin{align}
     \alpha &:= \sqrt{(1-\alpha_{0})^{2} \cdot EngDiff + \alpha_{0}}
     \label{eq:dsrpa:alpha}
