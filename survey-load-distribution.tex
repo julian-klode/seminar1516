@@ -23,16 +23,6 @@ is sent via unicast to the next hop, which then forwards it to the end. This
 produces far less traffic than the \textit{route-request} messages, which are
 sent using broadcast messages.
 
-\subsubsection{Conditional max-min battery capacity routing (CMMBCR)}
-Like LEAR, CMMBCR\cite{toh2001maximum} uses a threshold level to optimise
-the energy effiency of its routing.
-Unlike LEAR, the threshold is fixed, though.
-
-If all nodes in some paths have higher residual energy than the threshold,
-the min-power path is chosen.
-If all routes have nodes with a residual energy lower than the threshold, the
-max-min route will be selected.
-
 \subsubsection{Infra-Structure AODV for Infrastructured Ad-Hoc networks (ISAIAH)}
 ISAIAH\cite{lindgren2002infrastructured} is an ad-hoc distance vector routing
 algorithm. It routes similar to AODV, but selects routes that pass through

@@ -39,9 +39,13 @@ Choosing a good value for $z$ in $zP_{\min}$ is important: For $z=1$, only
 the min-power path is considered; for $z \to \inf$, all paths can be
 considered. The algorithm starts with a \textit{random} value for $z$, and
 then measures the residual energy (\textit{lifetime}) of of the most overloaded node during some
-fixed time period. Afterwards, the value of $z$ is increased by a small constant
-and the lifetime is measured again. If the lifetime increases, the value of $z$
-is increased, otherwise, it is decreased. Because the lifetime is measured
+fixed time period.
+
+ Afterwards, the value of $z$ is increased by a small constant
+ and the lifetime is measured again. If the lifetime increases, the value of $z$
+is increased, otherwise, it is decreased.
+
+Because the lifetime is measured
 in two distinct time periods, it is assumed that load distribution is roughly
 similar, otherwise the results might not be really useful.
 %OOP: SPAN-FIGURE
@@ -51,12 +55,26 @@ similar, otherwise the results might not be really useful.
 \caption{Master eligibility rule in the SPAN protocol\cite{alotaibi2012survey}}
 \label{spanmaster}
 \end{figure*}
+\subsubsection{Conditional max-min battery capacity routing (CMMBCR)}
+Like LEAR, CMMBCR\cite{toh2001maximum} uses a threshold level to optimise
+the energy effiency of its routing.
+Unlike LEAR, the threshold is fixed, though.
+
+If all nodes in some paths have higher residual energy than the threshold,
+the min-power path is chosen.
+
+If all routes have nodes with a residual energy lower than the threshold, the
+max-min route will be selected.
+
 \subsubsection{Dynamic Source Routing Power-Aware (DSRPA)}
 \label{dsrpa}
 Dynamic Source Routing Power-Aware (DSRPA)\cite{djenouri2006new} defines a
 power-aware variant of dynamic source routing.
- It trades of battery freshness and power consumption by defining a
-metric on which it bases its routing.
+
+It uses a trade off between the `freshness' of batteries, that is, how much
+energy is still left in them; and the power consumption of the route, by
+defining a metric involving those two factors, and using that to measure the
+cost of a route.
 
 Power consumption is reduced by recording the transmission power in route
 request messages and then using that value and the reception power to calculate
@@ -68,8 +86,10 @@ each time a certain percentage of power has been consumed. For example, if the
 rate is set to $25\%$, a packet will be sent after 25, 50, and 75 per cent of
 power consumed.
 
-The metric representing the optimality of a a route $C=I_{0}, \ldots, I_{n-1}$
-is defined as the minimum of $Opt_{c}$ (\ref{eq:dsrpa:opt-c}).
+A route $c=I_{0}, \ldots, I_{n-1}$ is considered optimal if its value $Opt_{c}$,
+as defined in  (\ref{eq:dsrpa:opt-c}) is the minimum for all routes. Routes can
+be totally ordered using that value, giving us the ability to disperse data
+among several routes (see below).
 \begin{align}
 Opt_{c} &:= \sum_{i=0}^{n-2} \frac{\alpha}{\underbrace{1-eng(I_{i})}_{\text{residual energy rate}}} + \frac{1-\alpha}{\underbrace{1-\frac{Pow(I_{i}, I_{i+1})}{MaxPow(I_{i})}}_{= 1 - \text{rate of total power}}}
 \label{eq:dsrpa:opt-c}
