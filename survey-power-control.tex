@@ -109,6 +109,14 @@ So, given an example like Figure~\ref{plrexample} with a source node $A$, neighb
 destination $D$, $A$ should chose the next hop as the $N_{i}$ for which
 $p(\abs{AN_{i}}) + q(\abs{N_{i}D})$ is minimal.
 
+%OOP
+\begin{figure*}
+\centering
+\includegraphics[width=0.7\textwidth]{images/compow-level-choice}
+\caption{Power choice in COMPOW: (a) too low, (b) too high, (c) optimal}
+\label{compow:power-choice}
+\end{figure*}
+
 \subsubsection{Minimum energy routing (MER)}
 MER\cite{doshi2002demand} modifies the dynamic-source-routing (DSR)\cite{johnson1996dynamic}
 and 802.11 MAC algorithms\cite{woesner1998power} with 8 options (table~\ref{tbl:mer-options}) in order to
@@ -185,13 +193,6 @@ table at each node: That is, for each node, it stores the minimum power required
 
 
 
-\begin{figure*}
-\centering
-\includegraphics[width=0.7\textwidth]{images/compow-level-choice}
-\caption{Power choice in COMPOW: (a) too low, (b) too high, (c) optimal}
-\label{compow:power-choice}
-\end{figure*}
-
 \subsubsection{Retransmission-energy aware routing (RAR)}
 Transmissions may have link errors which require re-transmitting packets over
 a link. A path with many short links might be more efficient than a path with
@@ -223,6 +224,7 @@ tables ${RT}_{P_{i}}$ containing all nodes reachable from the current one. The
 optimal power level $P_{i}$ can be determined as the smallest one for which
 $\abs{RT_{P_{i}}}$ is equal to the number of nodes in the network, by
 exchanging the routing tables between nodes.
+
 
 \subsubsection{PARO}
 The PARO Protocol\cite{gomez2003paro} introduces intermediate nodes into a
