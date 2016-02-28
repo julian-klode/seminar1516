@@ -25,11 +25,11 @@ sent using broadcast messages.
 
 \subsubsection{Infra-Structure AODV for Infrastructured Ad-Hoc networks (ISAIAH)}
 ISAIAH\cite{lindgren2002infrastructured} is an ad-hoc distance vector routing
-algorithm. It routes similar to AODV, but selects routes that pass through
+algorithm. It routes similar to AODV; but selects routes that pass through
 so called power base station (PBS) instead of mobile nodes, in order to reduce
 the power consumption of the mobile nodes.
 
-As with PARO, the routes chosen by this algorithm are longer than strictly necessary, but
+As with PARO, the routes chosen by this algorithm are longer than strictly necessary; but
 because more nodes are stationary, the power consumption on the mobile nodes
 is reduced.
 
@@ -41,7 +41,7 @@ is lower than the stored one. The packet is then forwarded if the nodes residual
 energy is above a certain threshold.
 
 Once the route requests reach the destinations, the destination picks the route
-with the maximum minimum hop energy, that is the \textit{max-min} path.
-OMM\cite{li2001online} does something similar (see section~\ref{omm}), but EERP seems to use the power
+with the maximum minimum hop energy; that is, the \textit{max-min} path.
+OMM\cite{li2001online} does something similar (see section~\ref{omm}), but EERP uses the power
 levels before the transmission whereas OMM uses the power levels after the
 transmission and can also switch to min-power paths.
