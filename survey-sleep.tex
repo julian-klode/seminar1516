@@ -6,7 +6,7 @@ while the others can sleep safely. In such a scheme, nodes periodically wake up
 and elect a new master if the current one goes away.
 
 Two of the protocols discussed in this section, SPAN and GAF employ a master
-slave approach, whereas the PEN protocol has no such concept.
+slave approach; whereas the PEN protocol has no such concept.
 
 \subsubsection{SPAN}\label{span}
 %SPAN-FIGURE
@@ -38,16 +38,16 @@ GAF\cite{xu2001geography} uses the geographical (GPS) location of a node in
 order to position them into a virtual grid.
 
 Within each grid, the node with the highest residual energy becomes the master
-of the grid, responsible for routing messages through that grid, while the
+of the grid. The master is responsible for routing messages through that grid, while the
 slave nodes can be put to sleep and will alternate between sleep and listening
-states. For example, in grid B of Figure~\ref{gafgrids}, one of 2,3,4 can be the
-master of grid B and forward messages between A and B, while the other two can
+states. For example, in grid B of Figure~\ref{gafgrids}, any node in grid B can be the
+master of that grid and forward messages between A and B, while the other two can
 be put to sleep.
 
 Nodes have three states, as shown in Figure~\ref{gafstates}: active for some time span $T_{a}$, in which they
 act as the master of the grid; discovery for some time span $T_{d}$, in which a
-master is elected - a node becomes the master if it hears no more discover messages
-for time span $T_{d}$; and finally, a node can be sleeping.
+master is elected (a node becomes the master if it hears no more discover messages
+for time span $T_{d}$); and finally, a node can be sleeping.
 
 
 \subsubsection{Prototype embedded network (PEN)}\label{pen}
@@ -59,7 +59,7 @@ powering down again.
 
 A sending node waits until it receives a broadcast message from the intended
 destination, then sends a communication request to the destination during
-the destinations listening period. Finally, it starts the communication.
+the destination's listening period. Finally, it starts the communication.
 
 This scheme easily avoids the cost of selecting a master and avoids overloading
 master nodes. It is only effective for networks without much traffic, as the delay
