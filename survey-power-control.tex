@@ -94,8 +94,8 @@ of the receiver to calculate the minimum power required for transmissions
 from that sender to it. The value is appended at each intermediate node, and the
 destination node then includes it in its \textit{route-reply} header.
 
-The source node then includes this information when it sends a packet, and
-all nodes transmit that package with the controlled power level.
+The source node then includes this information when sending a packet, and
+all nodes transmit that package at the controlled power level.
 
 Option F does the same for the ACK packets of the MAC layer.
 
@@ -104,7 +104,7 @@ uses the information obtained by option $A$ to select the route that requires
 the minimum energy amongst its cached routes.
 
 Option $G$ takes care of adjusting routes when the power transmission requirements
-change because nodes moved.
+change because nodes have moved.
 
 Option $E$ and $H$ allow nodes not participating in the routing to recommend
 alternative, more energy-efficient, routes.
@@ -138,7 +138,7 @@ and $P_{th}$ is the threshold power for a successful receive. In 802.11, that is
 usually $3.652 \cdot 10^{-10}$ watt.
 
 In addition to the usual tables maintained by DSR, MEDSR also stores a power
-table at each node: That is, for each node, it stores the minimum power required to reach it.
+table at each node: That is, for each node, the minimum power required to reach it.
 
 
 
@@ -165,11 +165,11 @@ The smallest common power protocol\cite{narayanaswamy2002power} achieves bi-dire
 of communication in the network.
 It does so by maintaining a smallest common transmission power for all nodes,
 chosen so that all nodes can communicate with each other. If the power is too
-low, some nodes could not reach some others, if it is too high, there might be
+low, some nodes could not reach some others; if it is too high, there might be
 many redundant paths. See Figure~\ref{compow:power-choice}.
 
 COMPOW assumes a discrete set of power levels $P_{i}$ and maintains routing
-tables ${RT}_{P_{i}}$ containing all nodes reachable from the current one. The
+tables ${RT}_{P_{i}}$ containing all nodes reachable from the current node. The
 optimal power level $P_{i}$ can be determined as the smallest one for which
 $\abs{RT_{P_{i}}}$ is equal to the number of nodes in the network, by
 exchanging the routing tables between nodes.
@@ -185,7 +185,7 @@ link layer, and nodes must be able to overhear transmissions of other nodes
 above a certain minimum signal-to-noise-ratio (SNR) value. They must also
 be able to determine the SNR value of a received packet. It is also assumed
 that the power required for a transmission from $A$ to $B$ is about the same
-as from $B$ to $A$, as such interference conditions must be similar in both
+as from $B$ to $A$. Therefore, interference conditions must be similar in both
 directions, requiring the use of appropriate interference-free media access
 control (MAC) such as found in 802.11.
 
