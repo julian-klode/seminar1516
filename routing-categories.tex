@@ -42,21 +42,21 @@ that each node does not need to know the full network topology, but each
 node needs to know its location and each source needs to know the location
 of the receiver.
 
-In section~\ref{gaf} takes a look at the Geographic adaptive fidelity (GAF)
-protocol, which utilises geographical features for routing, but is not strictly
-a geographical routing protocol in the sense of this definition, as it only
-uses the geographic information for grouping nodes into clusters.
+Section~\ref{gaf} takes a look at the Geographic adaptive fidelity (GAF)
+protocol, which utilises geographical features for routing. It is not strictly
+a geographical routing protocol in the sense of this definition, though,
+as it only uses the geographic information for grouping nodes into clusters.
 
 \subsubsection*{Geo-cast}
-Geo-cast routing merges multi-cast routing with geographical routing, to
+Geo-cast routing merges multi-cast routing with geographical routing to
 deliver messages to a group of nodes identified by their locations.
 
 \subsubsection*{Hierarchical}
 A hierarchical routing algorithm defines multiple zones or clusters with
-gateways connecting the clusters with each other. Inside a cluster, there often
-are one or more cluster heads, that are responsible for maintaining the
+gateways connecting the clusters with each other. Inside a cluster, there
+are often one or more cluster heads that are responsible for maintaining the
 connectivity within the cluster. Non-head nodes can only communicate with
-their cluster heads, whereas gateway nodes can exchange information with
+their cluster heads; whereas gateway nodes can exchange information with
 other clusters.
 
 
@@ -68,9 +68,9 @@ use), load distribution (congested routes can be avoided by chosing alternative
 routes), peak performance (multiple routes may be used in parallel for different
 parts of data).
 
-Energy-efficiency is not a paramount concern of most multi-path routing, the
+Energy-efficiency is not a paramount concern of most multi-path routing. The
 load balancing idea can however not only be applied to performance, but also
-to power levels, to distribute the power used within the network, as can be seen
+to distribute the power used within the network, as can be seen
 in section~\ref{load-distribution}. Such an algorithm would of course also be power-aware.
 
 \subsubsection*{Power-aware}
@@ -105,8 +105,8 @@ Alotaibi and Mukherjee\cite{alotaibi2012survey} also mention flow-oriented (or `
 routing as another category.
 
 Examples they list include
-IERP, which most likely refers to the The Interzone Routing Protocol for Ad Hoc Networks, an Internet Draft\cite{manet-zone-ierp-02};
-and SrcRR\cite{aguayo2005srcrr}, a wireless mesh network routing protocol. It is unclear what exactly
+IERP, which most likely refers to the `Interzone Routing Protocol for Ad Hoc Networks', an Internet Draft\cite{manet-zone-ierp-02};
+and `SrcRR'\cite{aguayo2005srcrr}, a wireless mesh network routing protocol. It is unclear what exactly
 makes these routing protocols flow-aware, and in absence of any definition of
 that term, it does not warrant any further discussion. 
 
@@ -125,11 +125,11 @@ nodes participate in the distribution of data.
 
 Over the years, multiple routing algorithms for wireless mesh networks have
 been designed, examples include `B.A.T.M.A.N.' and the newer `B.A.T.M.A.N. advanced'
-which is used in the Freifunk community, for example\cite{batman-adv}.
+with users such as the Freifunk community\cite{batman-adv}.
 
 \subsubsection*{Multicast}
 Multicast routing algorithms are simply routing algorithms for multicast
 groups.
-One example for a multicast routing algorithm is multicast ad-hoc on-demand
-distance vector (MAODV)\cite{manet-maodv-00}, which is currently a
+One example for a multicast routing algorithm is `multicast ad-hoc on-demand
+distance vector' (MAODV)\cite{manet-maodv-00} which is currently a
 work-in-progress internet-draft.
