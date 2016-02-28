@@ -18,8 +18,8 @@ OMM \cite{li2001online} maximises the network lifetime using two metrics:
 
 First OMM calculates the \textit{min-power} path using Dijkstra’s algorithm. Let
 the power required by that be $P_{min}$.
-Then it determines the \textit{max-min} paths by looking at all paths whose
-power do not deviate much from the min-power path, that is, who consume less
+It then determines the \textit{max-min} paths by looking at all paths whose
+power do not deviate much from the min-power path; that is, those paths which consume less
 power than $zP_{\min}$ for some $z \ge 1$. It calculates the minimum residual power of all nodes
 after the transmission would have taken place, and chooses the path where
 that value is largest.
@@ -43,7 +43,7 @@ fixed time period.
 
  Afterwards, the value of $z$ is increased by a small constant
  and the lifetime is measured again. If the lifetime increases, the value of $z$
-is increased, otherwise, it is decreased.
+is increased; otherwise, it is decreased.
 
 Because the lifetime is measured
 in two distinct time periods, it is assumed that load distribution is roughly
