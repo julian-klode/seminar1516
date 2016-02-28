@@ -7,7 +7,7 @@ but instead focus more on distributing the power requirements among the availabl
 \subsubsection{Local Energy Aware Routing Protocol (LEAR)}
 LEAR\cite{woo2001non} is a variant of DSR.
 Its main behavioural change lies in the forwarding of \textit{route-request} messages.
-In LEAR, nodes only forward \textit{route-request} messages if their residual
+In LEAR, nodes only forward \textit{route-request} messages if their current residual
 energy level is above a certain threshold. Otherwise, the message is dropped
 and the node does not take part in forwarding packages.
 
@@ -35,10 +35,9 @@ is reduced.
 
 \subsubsection{Energy Efficient Routing Protocol in MANET (EERP)}
 EERP\cite{main2} is a variation of DSR that stores a minimum energy field
-in a route request package, which is set to 100 percent at the beginning. Each
-intermediate node will then override the value if its own residual energy rate
-is lower than the stored one. The packet is then forwarded if the nodes residual
-energy is above a certain threshold.
+in a route request package, which is set to 100 percent at the beginning.
+Each intermediate node will override the value if its own current residual energy rate (`percentage') is lower than the stored one.
+The packet is forwarded if the node's residual energy is above a certain threshold.
 
 Once the route requests reach the destinations, the destination picks the route
 with the maximum minimum hop energy; that is, the \textit{max-min} path.
