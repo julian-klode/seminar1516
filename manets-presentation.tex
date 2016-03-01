@@ -6,8 +6,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[UKenglish]{babel}
 
+\setbeamertemplate{bibliography item}{\insertbiblabel}
 
-\title{Energy-efficient Routing Protocols for Mobile Ad-hoc Networks}
+\title{Energy-efficient Routing Protocols for MANETs}
 \author{Julian Andres Klode}
 \date{March 1, 2016}
 
@@ -17,21 +18,17 @@
 
 \section{Introduction}
 \frame{\tableofcontents[currentsection]}
-\begin{frame}{Types of Mobile-Ad-hoc networks}
-  \begin{Definition}[ad-hoc network]
+\begin{frame}{Motivation}
+\begin{Definition}[ad-hoc network]
     A wireless network of mobile nodes without base stations.
   \end{Definition}
-  \begin{Definition}[mesh network]
-    A ad-hoc network where all nodes take part in routing messages
-  \end{Definition}
-\end{frame}
-\begin{frame}{Motivation}
   Use cases:
 
   \begin{itemize}
       \item Wireless sensor networks
       \item Internet-of-thing devices
       \item Mobile phones connecting directly with each others
+      \item Mesh networks
   \end{itemize}
 
   and more.
@@ -121,38 +118,7 @@
 \end{table}
 \end{frame}
 
-\begin{frame}{Minimum energy routing (MER)}
-\begin{block}{Option A, F: power control}
-    \begin{itemize}
-    \item Option A: Routing packet-based
-    \begin{itemize}
-        \item Append transmission power at each node in \textit{route-request} packets
-        \item Send back in \textit{route-reply} packet
-    \end{itemize}
-    \item Option F: Same for packets in the MAC layer
-    \end{itemize}
-\end{block}
-\begin{block}{Option B: Minimum energy routing}
-    \begin{itemize}
-        \item Find least energy route from cache and route using that
-    \end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}{Minimum energy routing (MER)}
-    \begin{block}{Option G: Route Maintenance with power sensing \& Routing software}
-    \begin{itemize}
-        \item Adjust routes for moving nodes
-    \end{itemize}
-\end{block}
-
-\begin{block}{Option E, H: Multi-hop route discovery \& HMAC-level snooping and gratious replies}
-    \begin{itemize}
-        \item Discover alternative routes
-        \item Advertise alternative more power efficient routes
-    \end{itemize}
-\end{block}
-\end{frame}
+% EXC 1
 
 \begin{frame}{Local Minimum Energy Dynamic Source Routing Protocol (MEDSR)\cite{tanque2007minimum}}
     \begin{itemize}
@@ -239,7 +205,7 @@
 \begin{block}{Energy Efficient Routing Protocol in MANET (EERP)\cite{main2}}
 \begin{itemize}
     \item Only forward a packet if current power level is above a threshold
-    \item Store current power level (or rather percentage) in packet
+    \item Store current power level (or rather percentage) in packet (if lower than stored)
     \item Destination of route request determines the optimal route
         $\leftrightarrow$ route with the maximum minimum power level
 \end{itemize}
@@ -392,3 +358,37 @@ $\rightarrow$ No masters or slaves!
 \bibliography{IEEEabrv,manets}
 \end{frame}
 \end{document}
+
+% EXC1
+\begin{frame}{Minimum energy routing (MER)}
+\begin{block}{Option A, F: power control}
+    \begin{itemize}
+    \item Option A: Routing packet-based
+    \begin{itemize}
+        \item Append transmission power at each node in \textit{route-request} packets
+        \item Send back in \textit{route-reply} packet
+    \end{itemize}
+    \item Option F: Same for packets in the MAC layer
+    \end{itemize}
+\end{block}
+\begin{block}{Option B: Minimum energy routing}
+    \begin{itemize}
+        \item Find least energy route from cache and route using that
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Minimum energy routing (MER)}
+    \begin{block}{Option G: Route Maintenance with power sensing \& Routing software}
+    \begin{itemize}
+        \item Adjust routes for moving nodes
+    \end{itemize}
+\end{block}
+
+\begin{block}{Option E, H: Multi-hop route discovery \& HMAC-level snooping and gratious replies}
+    \begin{itemize}
+        \item Discover alternative routes
+        \item Advertise alternative more power efficient routes
+    \end{itemize}
+\end{block}
+\end{frame}
